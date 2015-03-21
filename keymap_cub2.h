@@ -19,28 +19,26 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         FN7,
         NUBS, FN8, FN9
     ),
-
     KEYMAP(  // Layer1: Sublime
         // left hand
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-        TRNS,FN0,   FN1,   E,   R,   FN3,   UNDO,
+        TRNS,F1,F2,F3,F4,F5,F6,
+        TRNS,FN0,   FN1,   E,   FN2,   FN3,   UNDO,
         TRNS,FN4,   FN5,   FN6,   FN7,   FN8,
         TRNS,Z,   X,   C,   V,   FN0,   AGAIN,
         TRNS,TRNS,FN9,FN10,FN11,
-                                      FN12,FN13,
+                                      TRNS,FN13,
                                            FN14,
                                  TRNS,TRNS,FN15,
         // right hand
-             TRNS,TRNS,TRNS,TRNS,FN16,FN17,TRNS,
-             TRNS,FN18,   FN19,   UP,   FN20,   FN21,   FN22,
+             F7,F8,F9,F10,FN16,FN17,TRNS,
+             FN19,FN18,   HOME,   UP,   END,   FN21,   FN22,
                   FN23,   LEFT,   DOWN,   RIGHT,  FN24,   TRNS,
-             TRNS,FN25,   FN26,   FN27,FN28,FN29,TRNS,
+             FN20,FN25,   FN26,   FN27,FN28,FN29,TRNS,
                        FN11,FN30,FN9,TRNS, RCTRL,
-        PGUP,PGDOWN,
-        TRNS,
-        INS,FN31,FN2
+        INS,DEL,
+        PGUP,
+        PGDOWN,TRNS,FN12
     ),
-
     KEYMAP(  // Layer2: Photoshop
         // left hand
         TRNS,FN0,  FN1,  FN2,  FN3,  FN4,FN5,
@@ -61,96 +59,93 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,
         NO,NO,NO
     ),
-
-
-
 };
 
 /*
  * Fn action definition
  */
 static const uint16_t PROGMEM fn_actions[] = {
-     [0] =   ACTION_FUNCTION(TEENSY_KEY),      
+    [0] =   ACTION_LAYER_MOMENTARY(1),      
 
-    [1] =   ACTION_MODS_KEY(),
-    [2] =   ACTION_MODS_KEY(),
-    [3] =   ACTION_MODS_KEY(),
-    [4] =   ACTION_MODS_KEY(),
+    [1] =   ACTION_LAYER_TOGGLE(1),
+    [2] =   ACTION_MODS_KEY(), // (
+    [3] =   ACTION_MODS_KEY(), // {
+    [4] =   ACTION_MODS_KEY(), // L[3]
 
-    [5] =   ACTION_MODS_TAP_KEY(),
-    [6] =   ACTION_MODS_TAP_KEY(),
-    [7] =   ACTION_MODS_TAP_KEY(),
-    [8] =   ACTION_MODS_TAP_KEY(),
-    [9] =   ACTION_MODS_TAP_KEY(),
-    [10] =  ACTION_MODS_TAP_KEY(),
-
-    [11] =  ACTION_MODS_TAP_KEY(),
-    [12] =  ACTION_MODS_TAP_KEY(),
-    [13] =  ACTION_MODS_TAP_KEY(),
-    [14] =  ACTION_MODS_TAP_KEY(),
-    [15] =  ACTION_MODS_TAP_KEY(),
-    [16] =  ACTION_MODS_TAP_KEY(),
-
-    [17] =  ACTION_LAYER_SET(), 
-    [18] =  ACTION_LAYER_SET(),
-    [19] =  ACTION_LAYER_SET(),  
-    [20] =  ACTION_LAYER_MOMENTARY(), 
-    [21] =  ACTION_FUNCTION_TAP(), 
-    [22] =  ACTION_FUNCTION_TAP(), 
-    [23] =  ACTION_LAYER_TAP_KEY(), 
-    [24] =  ACTION_LAYER_TAP_KEY(),
-    
-    [25] =  ACTION_LAYER_TAP_KEY(), 
-    [26] =  ACTION_LAYER_TAP_KEY(), 
-    [27] =  ACTION_LAYER_TAP_KEY(), 
-    [28] =  ACTION_LAYER_TAP_KEY(),
-    [29] =  ACTION_LAYER_TAP_KEY(), 
-    [30] =  ACTION_LAYER_TAP_KEY(), 
-    [31] =  ACTION_LAYER_TAP_KEY(),                 
-
+    [5] =   ACTION_MODS_TAP_KEY(), //}
+    [6] =   ACTION_MODS_TAP_KEY(), //)
+    [7] =   ACTION_MODS_TAP_KEY(), //+L1
+    [8] =   ACTION_MODS_TAP_KEY(), //Launchy Ctrl+;
+    [9] =   ACTION_MODS_TAP_KEY(), //XButton1 or MButton4???
 };
 
-static const uint16_t PROGMEM fn_actions_1[] ={} ;
+static const uint16_t PROGMEM fn_actions_1[] ={
+
+    [0] =   ACTION_MODS_KEY(),//ctrl+q 
+
+    [1] =   ACTION_MODS_KEY(), //ctrl+alt+f1
+    [2] =   ACTION_MODS_KEY(), //ctrl+r
+    [3] =   ACTION_MODS_KEY(), //ctrl+t
+    [4] =   ACTION_MODS_KEY(), //ctrl+a
+
+    [5] =   ACTION_MODS_TAP_KEY(), //ctrl+s
+    [6] =   ACTION_MODS_TAP_KEY(), //ctrl+d
+    [7] =   ACTION_MODS_TAP_KEY(), //ctrl+f | Layer [0]
+    [8] =   ACTION_MODS_TAP_KEY(), //ctrl+g | Layer [0]
+    [9] =   ACTION_MODS_TAP_KEY(), //Lwin | Layer [0]
+    [10] =  ACTION_MODS_TAP_KEY(), //XButton1 + C
+
+    [11] =  ACTION_MODS_TAP_KEY(), //ctrl+shift+space
+    [12] =  ACTION_MODS_TAP_KEY(), //XButton1 | Layer [0]
+    [13] =  ACTION_MODS_TAP_KEY(), //ctrl+shift+h
+    [14] =  ACTION_MODS_TAP_KEY(), //XButton1 + B
+    [15] =  ACTION_MODS_TAP_KEY(), //XButton1 + C
+    [16] =  ACTION_MODS_TAP_KEY(), //ctrl+shift+f11
+
+    [17] =  ACTION_LAYER_SET(), //ctrl+shift+f4
+    [18] =  ACTION_LAYER_SET(), //ctrl+l
+    [19] =  ACTION_LAYER_SET(), //ctrl+shift+f10
+    [20] =  ACTION_LAYER_SET(), //ctrl+shift+f9
+    [21] =  ACTION_FUNCTION_TAP(), //ctrl+p | Layer[0]
+    [22] =  ACTION_FUNCTION_TAP(), //Layer[0]
+    [23] =  ACTION_LAYER_TAP_KEY(), //ctrl+h | Layer[0]
+    [24] =  ACTION_LAYER_TAP_KEY(), //ctrl+'
+    
+    [25] =  ACTION_LAYER_TAP_KEY(), //ctrl+shift+m
+    [26] =  ACTION_LAYER_TAP_KEY(), //ctrl+shift+a
+    [27] =  ACTION_LAYER_TAP_KEY(), //ctrl+,
+    [28] =  ACTION_LAYER_TAP_KEY(), //ctrl+.
+    [29] =  ACTION_LAYER_TAP_KEY(), //ctrl+/
+    [30] =  ACTION_LAYER_TAP_KEY(), //ctrl+shift+f6
+
+} ;
 
 static const uint16_t PROGMEM fn_actions_2[] = {
 
-    [0] =   ACTION_FUNCTION(TEENSY_KEY),      
+    [0] =   ACTION_MODS_KEY(), //ctrl+0
 
-    [1] =   ACTION_MODS_KEY(),
-    [2] =   ACTION_MODS_KEY(),
-    [3] =   ACTION_MODS_KEY(),
-    [4] =   ACTION_MODS_KEY(),
+    [1] =   ACTION_MODS_KEY(), //alt+f7
+    [2] =   ACTION_MODS_KEY(), //ctrl+shift+n
+    [3] =   ACTION_MODS_KEY(), //alt+f6
+    [4] =   ACTION_MODS_KEY(), //ctrl+shift+f12
 
-    [5] =   ACTION_MODS_TAP_KEY(),
-    [6] =   ACTION_MODS_TAP_KEY(),
-    [7] =   ACTION_MODS_TAP_KEY(),
-    [8] =   ACTION_MODS_TAP_KEY(),
-    [9] =   ACTION_MODS_TAP_KEY(),
-    [10] =  ACTION_MODS_TAP_KEY(),
+    [5] =   ACTION_MODS_TAP_KEY(), //Layer[0]
+    [6] =   ACTION_MODS_TAP_KEY(), //ctrl+alt+f7
+    [7] =   ACTION_MODS_TAP_KEY(), //ctrl+alt+f8
+    [8] =   ACTION_MODS_TAP_KEY(), //ctrl+alt+f1
+    [9] =   ACTION_MODS_TAP_KEY(), //ctrl+alt+f2
+    [10] =  ACTION_MODS_TAP_KEY(), //ctrl+alt+f3
 
-    [11] =  ACTION_MODS_TAP_KEY(),
-    [12] =  ACTION_MODS_TAP_KEY(),
-    [13] =  ACTION_MODS_TAP_KEY(),
-    [14] =  ACTION_MODS_TAP_KEY(),
-    [15] =  ACTION_MODS_TAP_KEY(),
-    [16] =  ACTION_MODS_TAP_KEY(),
+    [11] =  ACTION_MODS_TAP_KEY(), //ctrl+t
+    [12] =  ACTION_MODS_TAP_KEY(), //ctrl+alt+f4
+    [13] =  ACTION_MODS_TAP_KEY(), //ctrl+alt+f5
+    [14] =  ACTION_MODS_TAP_KEY(), //ctrl+alt+f6
+    [15] =  ACTION_MODS_TAP_KEY(), //ctrl+shift+f10
+    [16] =  ACTION_MODS_TAP_KEY(), //ctrl+shift+f9
 
-    [17] =  ACTION_LAYER_SET(), 
-    [18] =  ACTION_LAYER_SET(),
-    [19] =  ACTION_LAYER_SET(),  
-    [20] =  ACTION_LAYER_MOMENTARY(), 
-    [21] =  ACTION_FUNCTION_TAP(), 
-    [22] =  ACTION_FUNCTION_TAP(), 
-    [23] =  ACTION_LAYER_TAP_KEY(), 
-    [24] =  ACTION_LAYER_TAP_KEY(),
-    
-    [25] =  ACTION_LAYER_TAP_KEY(), 
-    [26] =  ACTION_LAYER_TAP_KEY(), 
-    [27] =  ACTION_LAYER_TAP_KEY(), 
-    [28] =  ACTION_LAYER_TAP_KEY(),
-    [29] =  ACTION_LAYER_TAP_KEY(), 
-    [30] =  ACTION_LAYER_TAP_KEY(), 
-    [31] =  ACTION_LAYER_TAP_KEY(),
+    [17] =  ACTION_LAYER_SET(), //Lwin | Layer[0]
+    [18] =  ACTION_LAYER_SET(), //ctrl+shift+f12
+    [19] =  ACTION_LAYER_SET(), //ctrl+shift+f11
 
 };
 
@@ -177,8 +172,6 @@ action_t keymap_fn_to_action(uint8_t keycode)
     if (layer == 2 && FN_INDEX(keycode) < FN_ACTIONS_2_SIZE) {
         action.code = pgm_read_word(&fn_actions_2[FN_INDEX(keycode)]);
     }
-
-
 
     // by default, use fn_actions from default layer 0
     // this is needed to get mapping for same key, that was used switch to some layer,
