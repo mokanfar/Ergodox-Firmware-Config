@@ -17,7 +17,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                        SPC, INS,  LGUI, DELETE,   ENTER,
         FN5,FN6,
         FN7,
-        NUBS, FN8, FN9
+        NUBS, FN8, BTN4
     ),
     KEYMAP(  // Layer1: Sublime
         // left hand
@@ -25,19 +25,19 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,FN0,   FN1,   E,   FN2,   FN3,   UNDO,
         TRNS,FN4,   FN5,   FN6,   FN7,   FN8,
         TRNS,Z,   X,   C,   V,   FN0,   AGAIN,
-        TRNS,TRNS,FN9,FN10,FN11,
+        TRNS,TRNS,LGUI,F13,FN11,
                                       TRNS,FN13,
-                                           FN14,
-                                 TRNS,TRNS,FN15,
+                                           F14,
+                                 TRNS,TRNS,F13,
         // right hand
              F7,F8,F9,F10,FN16,FN17,TRNS,
              FN19,FN18,   HOME,   UP,   END,   FN21,   FN22,
                   FN23,   LEFT,   DOWN,   RIGHT,  FN24,   TRNS,
              FN20,FN25,   FN26,   FN27,FN28,FN29,TRNS,
-                       FN11,FN30,FN9,TRNS, RCTRL,
+                       FN11,FN30,LGUI,TRNS, RCTRL,
         INS,DEL,
         PGUP,
-        PGDOWN,TRNS,FN12
+        PGDOWN,TRNS,BTN4
     ),
     KEYMAP(  // Layer2: Photoshop
         // left hand
@@ -45,7 +45,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         FN6,FN7,  FN8,  FN9,  FN10,  FN11,  TRNS,
         TRNS,A,  FN12,  FN13,  FN14,FN15,
         TRNS,Z,  X,  C,  V,FN16,  TRNS,
-        TRNS,LBRC,FN17,RBRC,SPC,
+        TRNS,LBRC,LGUI,RBRC,SPC,
                                       M,K,
                                         Q,
                             LCTRL, LALT,E,
@@ -59,6 +59,26 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,
         NO,NO,NO
     ),
+    KEYMAP(  // Layer3: Function keyboard
+        // left hand
+        TRNS,F1,  F2,  F3,  F4,  F5,F6,
+        TRNS,TRNS,  TRNS,  TRNS,  TRNS,  TRNS,  TRNS,
+        TRNS,TRNS,  TRNS,  TRNS,  TRNS,TRNS,
+        TRNS,TRNS,  TRNS,  TRNS,  TRNS,TRNS,  TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,
+                                      TRNS,TRNS,
+                                        TRNS,
+                            TRNS, TRNS,TRNS,
+        // right hand
+             F7,F8,F9,F10,F11,F12,TRNS,
+             TRNS,TRNS,  TRNS,  TRNS,  TRNS,  TRNS,   TRNS,
+                  TRNS,  TRNS,  TRNS,  TRNS,  TRNS,   TRNS,
+             TRNS,TRNS,  TRNS,  TRNS,  TRNS,  TRNS, TRNS,
+                       TRNS,  TRNS,TRNS,TRNS, TRNS,
+        TRNS,TRNS,
+        TRNS,
+        TRNS,TRNS,TRNS
+    ),
 };
 
 /*
@@ -68,84 +88,88 @@ static const uint16_t PROGMEM fn_actions[] = {
     [0] =   ACTION_LAYER_MOMENTARY(1),      
 
     [1] =   ACTION_LAYER_TOGGLE(1),
-    [2] =   ACTION_MODS_KEY(), // (
-    [3] =   ACTION_MODS_KEY(), // {
-    [4] =   ACTION_MODS_KEY(), // L[3]
+    [2] =   ACTION_MODS_KEY(MOD_LSFT, KC_9), // (
+    [3] =   ACTION_MODS_KEY(MOD_LSFT, KC_LBRC), // {
+    [4] =   ACTION_LAYER_TOGGLE(3), // L[3]
 
-    [5] =   ACTION_MODS_TAP_KEY(), //}
-    [6] =   ACTION_MODS_TAP_KEY(), //)
-    [7] =   ACTION_MODS_TAP_KEY(), //+L1
-    [8] =   ACTION_MODS_TAP_KEY(), //Launchy Ctrl+;
-    [9] =   ACTION_MODS_TAP_KEY(), //XButton1 or MButton4???
+    [5] =   ACTION_MODS_KEY(MOD_LSFT, KC_RBRC), //}
+    [6] =   ACTION_MODS_KEY(MOD_LSFT, KC_0), //)
+    [7] =   ACTION_LAYER_TOGGLE(1), //+L1
+    [8] =   ACTION_MODS_KEY(MOD_LCTRL, KC_SCLN), //Launchy Ctrl+;
+    // [9] =   ACTION_MODS_TAP_KEY(), //XButton1 or MButton4???
 };
 
 static const uint16_t PROGMEM fn_actions_1[] ={
 
-    [0] =   ACTION_MODS_KEY(),//ctrl+q 
+    [0] =   ACTION_MODS_KEY(MOD_LCTRL, KC_Q),//ctrl+q 
 
-    [1] =   ACTION_MODS_KEY(), //ctrl+alt+f1
-    [2] =   ACTION_MODS_KEY(), //ctrl+r
-    [3] =   ACTION_MODS_KEY(), //ctrl+t
-    [4] =   ACTION_MODS_KEY(), //ctrl+a
+    [1] =   ACTION_MODS_KEY(MOD_LCTRL | MOD_LALT, KC_F1), //ctrl+alt+f1
+    [2] =   ACTION_MODS_KEY(MOD_LCTRL, KC_R), //ctrl+r
+    [3] =   ACTION_MODS_KEY(MOD_LCTRL, KC_T), //ctrl+t
+    [4] =   ACTION_MODS_KEY(MOD_LCTRL, KC_A), //ctrl+a
 
-    [5] =   ACTION_MODS_TAP_KEY(), //ctrl+s
-    [6] =   ACTION_MODS_TAP_KEY(), //ctrl+d
-    [7] =   ACTION_MODS_TAP_KEY(), //ctrl+f | Layer [0]
-    [8] =   ACTION_MODS_TAP_KEY(), //ctrl+g | Layer [0]
-    [9] =   ACTION_MODS_TAP_KEY(), //Lwin | Layer [0]
-    [10] =  ACTION_MODS_TAP_KEY(), //XButton1 + C
+    [5] =   ACTION_MODS_KEY(MOD_LCTRL, KC_S), //ctrl+s
+    [6] =   ACTION_MODS_KEY(MOD_LCTRL, KC_D), //ctrl+d
+    [7] =   ACTION_MODS_KEY(MOD_LCTRL, KC_F), //ctrl+f | Layer [0]
+    [8] =   ACTION_MODS_KEY(MOD_LCTRL, KC_G), //ctrl+g | Layer [0]
+    //[9] =   ACTION_MODS_TAP_KEY(), //Lwin | Layer [0]
+    //[10] =  ACTION_MODS_TAP_KEY(), //XButton1 + C
+    //auto hot key set F13 activate chrome instead of FN10
 
-    [11] =  ACTION_MODS_TAP_KEY(), //ctrl+shift+space
-    [12] =  ACTION_MODS_TAP_KEY(), //XButton1 | Layer [0]
-    [13] =  ACTION_MODS_TAP_KEY(), //ctrl+shift+h
-    [14] =  ACTION_MODS_TAP_KEY(), //XButton1 + B
-    [15] =  ACTION_MODS_TAP_KEY(), //XButton1 + C
-    [16] =  ACTION_MODS_TAP_KEY(), //ctrl+shift+f11
+    [11] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_SPC), //ctrl+shift+space
+    //[12] =  ACTION_MODS_TAP_KEY(), //XButton1 | Layer [0]
+    //mouse button 4
+    [13] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_H), //ctrl+shift+h
+    //[14] =  ACTION_MODS_TAP_KEY(), //XButton1 + B
+    //auto hot key F14 activate Sublime
+    //[15] =  ACTION_MODS_TAP_KEY(), //XButton1 + C
+    //auto hot key F13 Activate Chrome
+    [16] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_F11), //ctrl+shift+f11
 
-    [17] =  ACTION_LAYER_SET(), //ctrl+shift+f4
-    [18] =  ACTION_LAYER_SET(), //ctrl+l
-    [19] =  ACTION_LAYER_SET(), //ctrl+shift+f10
-    [20] =  ACTION_LAYER_SET(), //ctrl+shift+f9
-    [21] =  ACTION_FUNCTION_TAP(), //ctrl+p | Layer[0]
-    [22] =  ACTION_FUNCTION_TAP(), //Layer[0]
-    [23] =  ACTION_LAYER_TAP_KEY(), //ctrl+h | Layer[0]
-    [24] =  ACTION_LAYER_TAP_KEY(), //ctrl+'
+    [17] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_F4), //ctrl+shift+f4
+    [18] =  ACTION_MODS_KEY(MOD_LCTRL, KC_L), //ctrl+l
+    [19] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_F10), //ctrl+shift+f10
+    [20] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_F9), //ctrl+shift+f9
+    [21] =  ACTION_MODS_KEY(MOD_LCTRL, KC_P), //ctrl+p | Layer[0]
+    [22] =  ACTION_LAYER_SET_CLEAR(0), //Layer[0]
+    [23] =  ACTION_MODS_KEY(MOD_LCTRL, KC_H), //ctrl+h | Layer[0]
+    [24] =  ACTION_MODS_KEY(MOD_LCTRL, KC_QUOT), //ctrl+'
     
-    [25] =  ACTION_LAYER_TAP_KEY(), //ctrl+shift+m
-    [26] =  ACTION_LAYER_TAP_KEY(), //ctrl+shift+a
-    [27] =  ACTION_LAYER_TAP_KEY(), //ctrl+,
-    [28] =  ACTION_LAYER_TAP_KEY(), //ctrl+.
-    [29] =  ACTION_LAYER_TAP_KEY(), //ctrl+/
-    [30] =  ACTION_LAYER_TAP_KEY(), //ctrl+shift+f6
+    [25] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_M), //ctrl+shift+m
+    [26] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_A), //ctrl+shift+a
+    [27] =  ACTION_MODS_KEY(MOD_LCTRL, KC_COMM), //ctrl+,
+    [28] =  ACTION_MODS_KEY(MOD_LCTRL, KC_DOT), //ctrl+.
+    [29] =  ACTION_MODS_KEY(MOD_LCTRL, KC_SLSH), //ctrl+/
+    [30] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_F6), //ctrl+shift+f6
 
 } ;
 
 static const uint16_t PROGMEM fn_actions_2[] = {
 
-    [0] =   ACTION_MODS_KEY(), //ctrl+0
+    [0] =   ACTION_MODS_KEY(MOD_LCTRL, KC_P0), //ctrl+0
 
-    [1] =   ACTION_MODS_KEY(), //alt+f7
-    [2] =   ACTION_MODS_KEY(), //ctrl+shift+n
-    [3] =   ACTION_MODS_KEY(), //alt+f6
-    [4] =   ACTION_MODS_KEY(), //ctrl+shift+f12
+    [1] =   ACTION_MODS_KEY(MOD_LALT, KC_F7), //alt+f7
+    [2] =   ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_N), //ctrl+shift+n
+    [3] =   ACTION_MODS_KEY(MOD_LALT, KC_F6), //alt+f6
+    [4] =   ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_F12), //ctrl+shift+f12
 
-    [5] =   ACTION_MODS_TAP_KEY(), //Layer[0]
-    [6] =   ACTION_MODS_TAP_KEY(), //ctrl+alt+f7
-    [7] =   ACTION_MODS_TAP_KEY(), //ctrl+alt+f8
-    [8] =   ACTION_MODS_TAP_KEY(), //ctrl+alt+f1
-    [9] =   ACTION_MODS_TAP_KEY(), //ctrl+alt+f2
-    [10] =  ACTION_MODS_TAP_KEY(), //ctrl+alt+f3
+    [5] =   ACTION_LAYER_SET_CLEAR(0), //Layer[0]
+    [6] =   ACTION_MODS_KEY(MOD_LCTRL | MOD_LALT, KC_F7), //ctrl+alt+f7
+    [7] =   ACTION_MODS_KEY(MOD_LCTRL | MOD_LALT, KC_F8), //ctrl+alt+f8
+    [8] =   ACTION_MODS_KEY(MOD_LCTRL | MOD_LALT, KC_F1), //ctrl+alt+f1
+    [9] =   ACTION_MODS_KEY(MOD_LCTRL | MOD_LALT, KC_F2), //ctrl+alt+f2
+    [10] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LALT, KC_F3), //ctrl+alt+f3
 
-    [11] =  ACTION_MODS_TAP_KEY(), //ctrl+t
-    [12] =  ACTION_MODS_TAP_KEY(), //ctrl+alt+f4
-    [13] =  ACTION_MODS_TAP_KEY(), //ctrl+alt+f5
-    [14] =  ACTION_MODS_TAP_KEY(), //ctrl+alt+f6
-    [15] =  ACTION_MODS_TAP_KEY(), //ctrl+shift+f10
-    [16] =  ACTION_MODS_TAP_KEY(), //ctrl+shift+f9
-
-    [17] =  ACTION_LAYER_SET(), //Lwin | Layer[0]
-    [18] =  ACTION_LAYER_SET(), //ctrl+shift+f12
-    [19] =  ACTION_LAYER_SET(), //ctrl+shift+f11
+    [11] =  ACTION_MODS_KEY(MOD_LCTRL, KC_T), //ctrl+t
+    [12] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LALT, KC_F4), //ctrl+alt+f4
+    [13] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LALT, KC_F5), //ctrl+alt+f5
+    [14] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LALT, KC_F6), //ctrl+alt+f6
+    [15] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_F10), //ctrl+shift+f10
+    [16] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_F9), //ctrl+shift+f9
+    //[17] =  ACTION_LAYER_SET(), //Lwin | Layer[0]
+    //LGUI instead
+    [18] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_F12), //ctrl+shift+f12
+    [19] =  ACTION_MODS_KEY(MOD_LCTRL | MOD_LSFT, KC_F11), //ctrl+shift+f11
 
 };
 
