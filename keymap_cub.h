@@ -3,7 +3,7 @@ TODO:
 Undo/Redo
 Better/efficient layer switching
 Teensy Function Copy for Image Overlay for layer cheat sheet
-    and assign hotkey
+    and assign
 
 */
 static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
