@@ -14,7 +14,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         PENT,A,FN10,D,FN9,G,
         LSFT,Z,X,C,V,B,N,
         LBRC,LALT,LGUI,INS,SPC,
-                                      FN2,FN3,
+                                      ESC,FN3,
                                            FN4,
                                  LCTL, FN8, FN0,
         // right hand
@@ -22,9 +22,10 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              PMNS,Y,   U,   I,   O,   P,   BTN4,
                   FN11,   J,   K,   L,   SCLN,ENTER,
              PPLS, N,   M,   COMM,DOT, SLSH,LSHIFT,
-                       SPC, INS,  RGUI, DELETE,RBRC, FN5,FN6,
+                       SPC, INS,  RGUI, DELETE,RBRC, 
+        FN5,FN6,
         QUOT,
-        NO, LALT, RCTL
+        ESC, LALT, RCTL
     ),
         KEYMAP(  // Layer1: Mouse Layer
         // left hand
@@ -35,7 +36,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ESC,TRNS,TRNS,TRNS,TRNS,
                                       GRV,TRNS,
                                         TRNS,
-                            TRNS, TRNS,TRNS,
+                            BTN1, TRNS,TRNS,
         // right hand
              F7,F8,F9,F10,F11,F12,TRNS,
              PMNS,TRNS,  P7,  P8,  P9,  TRNS,   FN1,
@@ -94,8 +95,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,Z,  X,  C,  V,FN16,  TRNS,
         TRNS,LBRC,LGUI,RBRC,SPC,
                                       M,K,
-                                        Q,
-                            LCTL, LALT,E,
+                                        TRNS,
+                            LCTL, LALT,TRNS,
         // right hand[6]
              NO,NO,NO,NO,NO,NO,TRNS,
              FN18,NO,  NO,  NO,  NO,  NO,   FN29,
@@ -121,17 +122,16 @@ enum function_id {
  */
  //Default
 static const uint16_t PROGMEM fn_actions[] = {
-    [0]  = ACTION_LAYER_TOGGLE(4),
-    [1]  = ACTION_LAYER_TOGGLE(1),
-    [2]  = ACTION_MODS_KEY(MOD_LSFT, KC_9), // (
+    [0]  = ACTION_LAYER_MOMENTARY(4),
+    [1]  = ACTION_LAYER_MOMENTARY(1),
     [3]  = ACTION_MODS_KEY(MOD_LSFT, KC_LBRC), // {
-    [4]  = ACTION_LAYER_TOGGLE(2), // L[2]
+    [4]  = ACTION_LAYER_MOMENTARY(2), //photoshop layer
     [5]  = ACTION_MODS_KEY(MOD_LSFT, KC_RBRC), //}
     [6]  = ACTION_MODS_KEY(MOD_LSFT, KC_0), //)
     [8]  = ACTION_MODS_KEY(MOD_LCTL, KC_SCLN), //Launchy Ctrl+;
     [9]  = ACTION_LAYER_TAP_KEY(1, KC_F), //Mouse Layer or D
-    [10] = ACTION_LAYER_TAP_KEY(2, KC_S), //Sublime Layer or S
-    [11] = ACTION_LAYER_TAP_KEY(3, KC_H), //Launchy Miscellaneous Layer
+    [10] = ACTION_LAYER_TAP_KEY(2, KC_S), //Miscellaneous layer
+    [11] = ACTION_LAYER_TAP_KEY(3, KC_H), //Sublime layer
 };
 
 //Mouse Layer
@@ -154,7 +154,7 @@ static const uint16_t PROGMEM fn_actions_1[] = {
 [7]    = ACTION_MODS_KEY(MOD_LCTL, KC_END), //t works
 };
 
-//Sublime
+//Miscellaneous layer
 static const uint16_t PROGMEM fn_actions_2[] ={
     [22] = ACTION_LAYER_SET_CLEAR(0), //layer 0
 };
@@ -186,7 +186,7 @@ static const uint16_t PROGMEM fn_actions_4[] = {
     [29] = ACTION_LAYER_SET_CLEAR(0), //ctrl+shift+f11
 
 };
-//miscellaneous layer 
+//sublime layer
 static const uint16_t PROGMEM fn_actions_3[] = {
 
 [12]=ACTION_MODS_KEY(MOD_LALT,KC_W),//expand to word
