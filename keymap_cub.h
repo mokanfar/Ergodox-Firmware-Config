@@ -22,7 +22,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              PMNS,Y,   U,   I,   O,   P,   BTN4,
                   FN11,   J,   K,   L,   SCLN,ENTER,
              PPLS, N,   M,   COMM,DOT, SLSH,LSHIFT,
-                       SPC, INS,  RGUI, DELETE,RBRC, 
+                       SPC, INS,  RGUI, DELETE,RBRC,
         FN5,FN6,
         QUOT,
         ESC, LALT, RCTL
@@ -38,8 +38,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                         TRNS,
                             BTN1, TRNS,TRNS,
         // right hand
-             F7,F8,F9,F10,F11,F12,TRNS,
-             VOLU,TRNS,  P7,  P8,  P9,  TRNS,   FN1,
+             FN1,FN2,F9,F10,F11,F12,TRNS,
+             VOLU,TRNS,  P7,  P8,  P9,  TRNS,   TRNS,
                   BTN1,  P4,  P2,  P6,  TRNS,   BTN1,
              VOLD,TRNS,  P1,  P2,  P3,  TRNS, TRNS,
                        TRNS,  TRNS,TRNS,TRNS, SLCK,
@@ -136,6 +136,8 @@ static const uint16_t PROGMEM fn_actions[] = {
 
 //Mouse Layer
 static const uint16_t PROGMEM fn_actions_1[] = {
+  [1]  = ACTION_MODS_KEY(MOD_LGUI, KC_LEFT), //ctrl+shift+n
+  [2]  = ACTION_MODS_KEY(MOD_LGUI, KC_RIGHT), //ctrl+shift+n
 // [0] = ACTION_LAYER_OFF(3, ON_BOTH), //Layer 0
 // [1] = ACTION_LAYER_SET(0, ON_PRESS), //Layer 0
 // [2] = ACTION_LAYER_INVERT(3, ON_BOTH), //Layer 0
@@ -263,7 +265,7 @@ if (id == TAP_OUT) {
                 del_key(keycode);
                 send_keyboard_report();
             }
-        } 
+        }
     }
 }
 
