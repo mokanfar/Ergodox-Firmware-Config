@@ -61,7 +61,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
              F15,TRNS,   TRNS,   UP,   TRNS,   TRNS,   BSLS,
                   HOME,   LEFT,   DOWN,   RIGHT,  END,   TRNS,
-             F16,TRNS, TRNS,   TRNS,TRNS,TRNS,TRNS,
+             F16,TRNS, TRNS,   FN23,FN24,TRNS,TRNS,
                        TRNS,TRNS,TRNS,TRNS, TRNS,
         TRNS,TRNS,
         TRNS,
@@ -159,6 +159,8 @@ static const uint16_t PROGMEM fn_actions_1[] = {
 //Miscellaneous layer
 static const uint16_t PROGMEM fn_actions_2[] ={
     [22] = ACTION_LAYER_SET_CLEAR(0), //layer 0
+    [23]=ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_COMMA),//Emmet prev selection
+    [24]=ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_DOT),//Emmet next selection
 };
 //Photoshop
 static const uint16_t PROGMEM fn_actions_4[] = {
@@ -186,24 +188,22 @@ static const uint16_t PROGMEM fn_actions_4[] = {
     [18] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_F12), //ctrl+shift+f12
     [19] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_F11), //ctrl+shift+f11
     [29] = ACTION_LAYER_SET_CLEAR(0), //ctrl+shift+f11
-
 };
+
 //sublime layer
 static const uint16_t PROGMEM fn_actions_3[] = {
 
-[12]=ACTION_MODS_KEY(MOD_LALT,KC_W),//expand to word
-[13]=ACTION_MODS_KEY(MOD_LCTL,KC_Q),//expand to quote
-[14]=ACTION_MODS_KEY(MOD_LALT,KC_B),//expand to bracket
-[15]=ACTION_MODS_KEY(MOD_LCTL,KC_L),//expand to line
-[16]=ACTION_MODS_KEY(MOD_LCTL,KC_M),//jump to matching bracket
-[17]=ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_SPACE),//expand selection
-[18]=ACTION_MODS_KEY(MOD_LALT,KC_E),//Expand Region
-// [19]=ACTION_MODS_KEY(MOD_LCTL,KC_SCLN),//LaunchyCtrl+;
-[20]=ACTION_MODS_KEY(MOD_LALT|MOD_LSFT,KC_A),//Align Tab;
-[21]=ACTION_LAYER_SET_CLEAR(0), //Launchy Ctrl+;
-[22]=ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_V),
-
-
+    [12]=ACTION_MODS_KEY(MOD_LALT,KC_W),//expand to word
+    [13]=ACTION_MODS_KEY(MOD_LCTL,KC_Q),//expand to quote
+    [14]=ACTION_MODS_KEY(MOD_LALT,KC_B),//expand to bracket
+    [15]=ACTION_MODS_KEY(MOD_LCTL,KC_L),//expand to line
+    [16]=ACTION_MODS_KEY(MOD_LCTL,KC_M),//jump to matching bracket
+    [17]=ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_SPACE),//expand selection
+    [18]=ACTION_MODS_KEY(MOD_LALT,KC_E),//Expand Region
+    // [19]=ACTION_MODS_KEY(MOD_LCTL,KC_SCLN),//LaunchyCtrl+;
+    [20]=ACTION_MODS_KEY(MOD_LALT|MOD_LSFT,KC_A),//Align Tab;
+    [21]=ACTION_LAYER_SET_CLEAR(0), //Launchy Ctrl+;
+    [22]=ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_V),
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
