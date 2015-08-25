@@ -27,7 +27,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         QUOT,
         ESC, LALT, RCTL
     ),
-        KEYMAP(  // Layer1: Mouse Layer
+        KEYMAP(  // Layer1: Mouse Layer holding down F
         // left hand
         TRNS,F1,  F2,  F3,  F4,  F5,F6,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PMNS,
@@ -47,7 +47,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,
         TRNS,F17,BTN1
     ),
-    KEYMAP(  // Layer2: Sublime
+    KEYMAP(  // Layer2: Sublime holding down S
         // left hand
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,   TRNS,   TRNS,   TRNS,   TRNS,   TRNS,
@@ -67,7 +67,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,
         TRNS,TRNS,TRNS
     ),
-        KEYMAP(  // Layer3: Launchy/Miscellaneous Layer
+        KEYMAP(  // Layer3: Launchy/Miscellaneous Layer holding down H
         // left hand
         ESC,F1,TRNS,BTN2,TRNS,BTN1,TRNS,
         TRNS,FN13,FN12,FN18,TRNS,FN16,F15,
@@ -87,27 +87,46 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,
         TRNS,TRNS,TRNS
     ),
-    KEYMAP(  // Layer4: Photoshop
+    // KEYMAP(  // Layer4: Photoshop
+    //     // left hand
+    //     TRNS,FN0,  FN1,  FN2,  FN3,  FN4,FN5,
+    //     FN6,FN7,  FN8,  FN9,  FN10,  FN11,  TRNS,
+    //     TRNS,A,  FN12,  FN13,  FN14,FN15,
+    //     TRNS,Z,  X,  C,  V,FN16,  TRNS,
+    //     TRNS,LBRC,LGUI,RBRC,SPC,
+    //                                   M,K,
+    //                                     TRNS,
+    //                         LCTL, LALT,TRNS,
+    //     // right hand[6]
+    //          NO,NO,NO,NO,NO,NO,TRNS,
+    //          FN18,NO,  NO,  NO,  NO,  NO,   FN29,
+    //               NO,  NO,  NO,  NO,  NO,   TRNS,
+    //          FN19,NO,  NO,  NO,  NO,  NO, TRNS,
+    //                    NO,  NO,NO,NO, TRNS,
+    //     NO,NO,
+    //     TRNS,
+    //     NO,NO,NO
+    // ),
+KEYMAP(  // Layer4: Sublime Expert new 08-2015
         // left hand
-        TRNS,FN0,  FN1,  FN2,  FN3,  FN4,FN5,
-        FN6,FN7,  FN8,  FN9,  FN10,  FN11,  TRNS,
-        TRNS,A,  FN12,  FN13,  FN14,FN15,
-        TRNS,Z,  X,  C,  V,FN16,  TRNS,
-        TRNS,LBRC,LGUI,RBRC,SPC,
-                                      M,K,
-                                        TRNS,
-                            LCTL, LALT,TRNS,
-        // right hand[6]
-             NO,NO,NO,NO,NO,NO,TRNS,
-             FN18,NO,  NO,  NO,  NO,  NO,   FN29,
-                  NO,  NO,  NO,  NO,  NO,   TRNS,
-             FN19,NO,  NO,  NO,  NO,  NO, TRNS,
-                       NO,  NO,NO,NO, TRNS,
-        NO,NO,
-        TRNS,
-        NO,NO,NO
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,FN3,FN4,FN5,FN6,FN7,FN8,
+        TRNS,FN9,FN10,FN11,FN12,FN13,
+        TRNS,FN14,FN15,FN16,FN17,FN18,FN19,
+        TRNS,TRNS,TRNS,TRNS,TRNS,
+                                      TRNS,TRNS,
+                                           TRNS,
+                                 TRNS,FN0,TRNS,
+        // right hand
+             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+             TRNS,FN20,FN21,UP,FN22,FN23,FN2,
+                  HOME,LEFT,DOWN,RIGHT,END,TRNS,
+             TRNS,TRNS,FN24,FN25,FN26,TRNS,TRNS,
+                       FN27,FN28,FN29,TRNS,FN30,
+        F22,TRNS,
+        F23,
+        F24,TRNS,BTN1
     ),
-
 };
 
 enum function_id {
@@ -122,7 +141,7 @@ enum function_id {
  */
  //Default
 static const uint16_t PROGMEM fn_actions[] = {
-    [0]  = ACTION_LAYER_MOMENTARY(4),
+    [0]  = ACTION_LAYER_TOGGLE(4),
     [1]  = ACTION_LAYER_MOMENTARY(1),
     [3]  = ACTION_MODS_KEY(MOD_LSFT, KC_LBRC), // {
     [4]  = ACTION_LAYER_MOMENTARY(2), //photoshop layer
@@ -136,74 +155,106 @@ static const uint16_t PROGMEM fn_actions[] = {
 
 //Mouse Layer
 static const uint16_t PROGMEM fn_actions_1[] = {
-  [1]  = ACTION_MODS_KEY(MOD_LGUI, KC_LEFT), //ctrl+shift+n
-  [2]  = ACTION_MODS_KEY(MOD_LGUI, KC_RIGHT), //ctrl+shift+n
-// [0] = ACTION_LAYER_OFF(3, ON_BOTH), //Layer 0
-// [1] = ACTION_LAYER_SET(0, ON_PRESS), //Layer 0
-// [2] = ACTION_LAYER_INVERT(3, ON_BOTH), //Layer 0
-//qwerty substitutions for testing purposes
-//[3]  = ACTION_MODS_ONESHOT(MOD_LSFT), //q (press once, holds shift, enter next key, shift releases after next key release)
-// [3] = ACTION_LAYER_MOMENTARY(1),//q
-//[4]  = ACTION_FUNCTION_TAP(CUSTOM_KEY), //w (gets stuck on/buggy maybe because it was on TAP instead of regular)
-//[4]  = ACTION_FUNCTION(CUSTOM_KEY),//w
-//[5]  = ACTION_LAYER_TAP_KEY(0, KC_4), //e (doesnt work)
-// [5] = ACTION_FUNCTION_TAP(TAP_OUT), //e works
-//[6]  = ACTION_MODS_TAP_KEY(MOD_RSFT, KC_MINS), //r (sends shift + sends minus. if hold down, acts like shift key. if just press does minus key)
-//[6]  = ACTION_LAYER_MODS(0, MOD_LSFT), //r
-[6]    = ACTION_MODS_KEY(MOD_LCTL, KC_HOME), //r
-//[7]  = ACTION_MODS_TAP_TOGGLE(MOD_LSFT), //t holds shift down when hold key down, release shift when release, just like normal key.
-//[7]  = ACTION_FUNCTION(COPY_KEY), //t works
-[7]    = ACTION_MODS_KEY(MOD_LCTL, KC_END), //t works
+    [1]  = ACTION_MODS_KEY(MOD_LGUI, KC_LEFT), //ctrl+shift+n
+    [2]  = ACTION_MODS_KEY(MOD_LGUI, KC_RIGHT), //ctrl+shift+n
+    [6]  = ACTION_MODS_KEY(MOD_LCTL, KC_HOME), //r
+    [7]  = ACTION_MODS_KEY(MOD_LCTL, KC_END), //t works
+    //[0] = ACTION_LAYER_OFF(3, ON_BOTH), //Layer 0
+    //[1] = ACTION_LAYER_SET(0, ON_PRESS), //Layer 0
+    //[1] = ACTION_LAYER_SET(0, ON_PRESS), //Layer 0
+    //[2] = ACTION_LAYER_INVERT(3, ON_BOTH), //Layer 0
+
+    //qwerty substitutions for testing purposes
+    //[3]  = ACTION_MODS_ONESHOT(MOD_LSFT), //q (press once, holds shift, enter next key, shift releases after next key release)
+    //[3] = ACTION_LAYER_MOMENTARY(1),//q
+    //[4]  = ACTION_FUNCTION_TAP(CUSTOM_KEY), //w (gets stuck on/buggy maybe because it was on TAP instead of regular)
+    //[4]  = ACTION_FUNCTION(CUSTOM_KEY),//w
+    //[5]  = ACTION_LAYER_TAP_KEY(0, KC_4), //e (doesnt work)
+    //[5] = ACTION_FUNCTION_TAP(TAP_OUT), //e works
+    //[6]  = ACTION_MODS_TAP_KEY(MOD_RSFT, KC_MINS), //r (sends shift + sends minus. if hold down, acts like shift key. if just press does minus key)
+    //[6]  = ACTION_LAYER_MODS(0, MOD_LSFT), //r
+    //[7]  = ACTION_MODS_TAP_TOGGLE(MOD_LSFT), //t holds shift down when hold key down, release shift when release, just like normal key.
+    //[7]  = ACTION_FUNCTION(COPY_KEY), //t works
 };
 
 //Miscellaneous layer
 static const uint16_t PROGMEM fn_actions_2[] ={
     [22] = ACTION_LAYER_SET_CLEAR(0), //layer 0
-    [23]=ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_COMMA),//Emmet prev selection
-    [24]=ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_DOT),//Emmet next selection
+    [23] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_COMMA),//Emmet prev selection
+    [24] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_DOT),//Emmet next selection
+};
+//sublime layer
+static const uint16_t PROGMEM fn_actions_3[] = {
+
+    [12] = ACTION_MODS_KEY(MOD_LALT,KC_W),//expand to word
+    [13] = ACTION_MODS_KEY(MOD_LCTL,KC_Q),//expand to quote
+    [14] = ACTION_MODS_KEY(MOD_LALT,KC_B),//expand to bracket
+    [15] = ACTION_MODS_KEY(MOD_LCTL,KC_L),//expand to line
+    [16] = ACTION_MODS_KEY(MOD_LCTL,KC_M),//jump to matching bracket
+    [17] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_SPACE),//expand selection
+    [18] = ACTION_MODS_KEY(MOD_LALT,KC_E),//Expand Region
+    [20] = ACTION_MODS_KEY(MOD_LALT|MOD_LSFT,KC_A),//Align Tab;
+    [21] = ACTION_LAYER_SET_CLEAR(0), //Launchy Ctrl+;
+    [22] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_V),
+    // [19] = ACTION_MODS_KEY(MOD_LCTL,KC_SCLN),//LaunchyCtrl+;
 };
 //Photoshop
 static const uint16_t PROGMEM fn_actions_4[] = {
 
-    [0]  = ACTION_MODS_KEY(MOD_LCTL, KC_P0), //ctrl+0
+//photoshop old
+    // [0]  = ACTION_MODS_KEY(MOD_LCTL, KC_P0), //ctrl+0
+    // [1]  = ACTION_MODS_KEY(MOD_LALT, KC_F7), //alt+f7
+    // [2]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_N), //ctrl+shift+n
+    // [3]  = ACTION_MODS_KEY(MOD_LALT, KC_F6), //alt+f6
+    // [4]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_F12), //ctrl+shift+f12
+    // [5]  = ACTION_LAYER_SET_CLEAR(0), //Layer[0]
+    // [6]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F7), //ctrl+alt+f7
+    // [7]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F8), //ctrl+alt+f8
+    // [8]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F1), //ctrl+alt+f1
+    // [9]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F2), //ctrl+alt+f2
+    // [10] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F3), //ctrl+alt+f3
+    // [11] = ACTION_MODS_KEY(MOD_LCTL, KC_T), //ctrl+t
+    // [12] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F4), //ctrl+alt+f4
+    // [13] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F5), //ctrl+alt+f5
+    // [14] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F6), //ctrl+alt+f6
+    // [15] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_F10), //ctrl+shift+f10
+    // [16] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_F9), //ctrl+shift+f9
+    // [18] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_F12), //ctrl+shift+f12
+    // [19] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_F11), //ctrl+shift+f11
+    // [29] = ACTION_LAYER_SET_CLEAR(0), //ctrl+shift+f11s
+//photoshop old end
 
-    [1]  = ACTION_MODS_KEY(MOD_LALT, KC_F7), //alt+f7
-    [2]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_N), //ctrl+shift+n
-    [3]  = ACTION_MODS_KEY(MOD_LALT, KC_F6), //alt+f6
-    [4]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_F12), //ctrl+shift+f12
-
-    [5]  = ACTION_LAYER_SET_CLEAR(0), //Layer[0]
-    [6]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F7), //ctrl+alt+f7
-    [7]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F8), //ctrl+alt+f8
-    [8]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F1), //ctrl+alt+f1
-    [9]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F2), //ctrl+alt+f2
-    [10] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F3), //ctrl+alt+f3
-
-    [11] = ACTION_MODS_KEY(MOD_LCTL, KC_T), //ctrl+t
-    [12] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F4), //ctrl+alt+f4
-    [13] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F5), //ctrl+alt+f5
-    [14] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_F6), //ctrl+alt+f6
-    [15] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_F10), //ctrl+shift+f10
-    [16] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_F9), //ctrl+shift+f9
-    [18] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_F12), //ctrl+shift+f12
-    [19] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_F11), //ctrl+shift+f11
-    [29] = ACTION_LAYER_SET_CLEAR(0), //ctrl+shift+f11
-};
-
-//sublime layer
-static const uint16_t PROGMEM fn_actions_3[] = {
-
-    [12]=ACTION_MODS_KEY(MOD_LALT,KC_W),//expand to word
-    [13]=ACTION_MODS_KEY(MOD_LCTL,KC_Q),//expand to quote
-    [14]=ACTION_MODS_KEY(MOD_LALT,KC_B),//expand to bracket
-    [15]=ACTION_MODS_KEY(MOD_LCTL,KC_L),//expand to line
-    [16]=ACTION_MODS_KEY(MOD_LCTL,KC_M),//jump to matching bracket
-    [17]=ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_SPACE),//expand selection
-    [18]=ACTION_MODS_KEY(MOD_LALT,KC_E),//Expand Region
-    // [19]=ACTION_MODS_KEY(MOD_LCTL,KC_SCLN),//LaunchyCtrl+;
-    [20]=ACTION_MODS_KEY(MOD_LALT|MOD_LSFT,KC_A),//Align Tab;
-    [21]=ACTION_LAYER_SET_CLEAR(0), //Launchy Ctrl+;
-    [22]=ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_V),
+    [0] = ACTION_LAYER_MOMENTARY(0),
+    [1] = ACTION_LAYER_SET_CLEAR(0),
+    [2] = ACTION_LAYER_OFF(4, ON_BOTH),
+    [3] = ACTION_MODS_KEY(MOD_LGUI,KC_G),
+    [4] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_G),
+    [5] = ACTION_MODS_KEY(MOD_LALT,KC_E),
+    [6] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_SCLN),
+    [7] = ACTION_MODS_KEY(MOD_LCTL,KC_T),
+    [8] = ACTION_MODS_KEY(MOD_LALT,KC_MINS),
+    [9] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_A),
+    [10] = ACTION_MODS_KEY(MOD_LCTL,KC_S),
+    [11] = ACTION_MODS_KEY(MOD_LCTL,KC_D),
+    [12] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_LBRC),
+    [13] = ACTION_MODS_KEY(MOD_LCTL,KC_G),
+    [14] = ACTION_MODS_KEY(MOD_LCTL,KC_Z),
+    [15] = ACTION_MODS_KEY(MOD_LCTL,KC_X),
+    [16] = ACTION_MODS_KEY(MOD_LCTL,KC_C),
+    [17] = ACTION_MODS_KEY(MOD_LCTL,KC_V),
+    [18] = ACTION_MODS_KEY(MOD_LALT,KC_T),
+    [19] = ACTION_MODS_KEY(MOD_LALT,KC_EQL),
+    [20] = ACTION_MODS_KEY(MOD_LCTL,KC_Y),
+    [21] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_RBRC),
+    [22] = ACTION_MODS_KEY(MOD_LCTL,KC_LEFT),
+    [23] = ACTION_MODS_KEY(MOD_LCTL,KC_RIGHT),
+    [24] = ACTION_MODS_KEY(MOD_LALT,KC_M),
+    [25] = ACTION_MODS_KEY(MOD_LCTL,KC_COMM),
+    [26] = ACTION_MODS_KEY(MOD_LCTL,KC_DOT),
+    [27] = ACTION_MODS_KEY(MOD_LSFT|MOD_LALT,KC_M),
+    [28] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_COMM),
+    [29] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_DOT),
+    [30] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_H)
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
@@ -226,7 +277,6 @@ if (id == TAP_OUT) {
     if (id == CUSTOM_KEY) {
        uint8_t weak_mods;
             uint8_t layer;
-
                 weak_mods = MOD_BIT(KC_LSFT);
                 layer     = 0;
 
@@ -296,6 +346,9 @@ action_t keymap_fn_to_action(uint8_t keycode)
 
      if (layer == 3 && FN_INDEX(keycode) < FN_ACTIONS_3_SIZE) {
         action.code = pgm_read_word(&fn_actions_3[FN_INDEX(keycode)]);
+    }
+     if (layer == 4 && FN_INDEX(keycode) < FN_ACTIONS_4_SIZE) {
+        action.code = pgm_read_word(&fn_actions_4[FN_INDEX(keycode)]);
     }
 
     // by default, use fn_actions from default layer 0
