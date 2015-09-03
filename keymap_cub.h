@@ -11,18 +11,18 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         BSPC, 1,   2,   3,   4,   5,   6,
         TAB, Q,   W,   E,   R,   T,   H,
-        PENT,A,FN10,D,FN9,G,
+        PENT,A,S,D,FN9,G,
         LSFT,Z,X,C,V,B,N,
-        LBRC,LALT,LGUI,INS,SPC,
+        LBRC,LALT,LGUI,INS,FN11,
                                       ESC,FN3,
                                            FN4,
-                                 LCTL, FN8, FN0,
+                                 LCTL, FN8, NO,
         // right hand
              7, 8,   9,   0,   MINS,   EQL,   BSPC,
              PMNS,Y,   U,   I,   O,   P,   BTN4,
-                  FN11,   J,   K,   L,   SCLN,ENTER,
+                  H,   J,   K,   L,   SCLN,ENTER,
              PPLS, N,   M,   COMM,DOT, SLSH,LSHIFT,
-                       SPC, INS,  RGUI, DELETE,RBRC,
+                       FN11, INS,  RGUI, DELETE,RBRC,
         FN5,FN6,
         QUOT,
         ESC, LALT, RCTL
@@ -39,9 +39,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             BTN1, TRNS,TRNS,
         // right hand
              FN1,FN2,F9,F10,F11,F12,TRNS,
-             VOLU,TRNS,  P7,  P8,  P9,  TRNS,   TRNS,
+             F15,TRNS,  P7,  P8,  P9,  TRNS,   TRNS,
                   BTN1,  P4,  P2,  P6,  TRNS,   BTN1,
-             VOLD,TRNS,  P1,  P2,  P3,  TRNS, TRNS,
+             F16,TRNS,  P1,  P2,  P3,  TRNS, TRNS,
                        TRNS,  TRNS,TRNS,TRNS, SLCK,
         TRNS,TRNS,
         TRNS,
@@ -73,7 +73,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,FN13,FN12,FN18,TRNS,FN16,F15,
         TRNS,FN20,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,TRNS,TRNS,FN22,FN14,F16,
-        TRNS,TRNS,TRNS,TRNS,FN17,
+        TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
                                  TRNS,TRNS,TRNS,
@@ -82,7 +82,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              FN19,TRNS,TRNS,TRNS,TRNS,TRNS,FN21,
                   TRNS,TRNS,TRNS,FN15,TRNS,TRNS,
              BTN4,TRNS,FN16,TRNS,TRNS,TRNS,TRNS,
-                       FN17,TRNS,TRNS,TRNS,TRNS,
+                       TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,
         TRNS,
         TRNS,TRNS,TRNS
@@ -111,21 +111,21 @@ KEYMAP(  // Layer4: Sublime Expert new 08-2015
         // left hand
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,FN3,FN4,FN5,FN6,FN7,FN8,
-        TRNS,FN9,FN10,FN11,FN12,FN13,
+        TRNS,FN9,FN10,FN0,FN12,FN13,
         TRNS,FN14,FN15,FN16,FN17,FN18,FN19,
         TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
-                                 TRNS,FN0,TRNS,
+                                 TRNS,FN0,FN31,
         // right hand
              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
              TRNS,FN20,FN21,UP,FN22,FN23,FN2,
                   HOME,LEFT,DOWN,RIGHT,END,TRNS,
-             TRNS,TRNS,FN24,FN25,FN26,TRNS,TRNS,
-                       FN27,FN28,FN29,TRNS,FN30,
-        F22,TRNS,
+             TRNS,FN27,FN24,FN28,FN29,TRNS,TRNS,
+                       TRNS,FN25,FN26,TRNS,FN30,
+        F19,TRNS,
         F23,
-        F24,TRNS,BTN1
+        F24,TRNS,TRNS
     ),
 };
 
@@ -149,8 +149,8 @@ static const uint16_t PROGMEM fn_actions[] = {
     [6]  = ACTION_MODS_KEY(MOD_LSFT, KC_0), //)
     [8]  = ACTION_MODS_KEY(MOD_LCTL, KC_SCLN), //Launchy Ctrl+;
     [9]  = ACTION_LAYER_TAP_KEY(1, KC_F), //Mouse Layer or D
-    [10] = ACTION_LAYER_TAP_KEY(2, KC_S), //Miscellaneous layer
-    [11] = ACTION_LAYER_TAP_KEY(3, KC_H), //Sublime layer
+    //[10] = ACTION_LAYER_TAP_KEY(4, KC_L), //sublime right hand
+    [11] = ACTION_LAYER_TAP_KEY(4, KC_SPC), //sublime expert layer
 };
 
 //Mouse Layer
@@ -224,7 +224,8 @@ static const uint16_t PROGMEM fn_actions_4[] = {
     // [29] = ACTION_LAYER_SET_CLEAR(0), //ctrl+shift+f11s
 //photoshop old end
 
-    [0] = ACTION_LAYER_MOMENTARY(0),
+    //[0] = ACTION_LAYER_MOMENTARY(0),
+    [0] = ACTION_MODS_KEY(MOD_LCTL,KC_D),
     [1] = ACTION_LAYER_SET_CLEAR(0),
     [2] = ACTION_LAYER_OFF(4, ON_BOTH),
     [3] = ACTION_MODS_KEY(MOD_LGUI,KC_G),
@@ -233,9 +234,8 @@ static const uint16_t PROGMEM fn_actions_4[] = {
     [6] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_SCLN),
     [7] = ACTION_MODS_KEY(MOD_LCTL,KC_T),
     [8] = ACTION_MODS_KEY(MOD_LALT,KC_MINS),
-    [9] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_A),
+    [9] = ACTION_MODS_KEY(MOD_LCTL,KC_A),
     [10] = ACTION_MODS_KEY(MOD_LCTL,KC_S),
-    [11] = ACTION_MODS_KEY(MOD_LCTL,KC_D),
     [12] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_LBRC),
     [13] = ACTION_MODS_KEY(MOD_LCTL,KC_G),
     [14] = ACTION_MODS_KEY(MOD_LCTL,KC_Z),
@@ -254,7 +254,8 @@ static const uint16_t PROGMEM fn_actions_4[] = {
     [27] = ACTION_MODS_KEY(MOD_LSFT|MOD_LALT,KC_M),
     [28] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_COMM),
     [29] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_DOT),
-    [30] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_H)
+    [30] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_H),
+    [31] = ACTION_LAYER_SET_CLEAR(4)
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
