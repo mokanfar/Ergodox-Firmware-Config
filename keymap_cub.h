@@ -106,7 +106,7 @@ static const uint16_t PROGMEM fn_actions_1[] = {
 
 //sublime expert layer
 static const uint16_t PROGMEM fn_actions_2[] = {
-    [0]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LCTL,KC_K),
+    [0]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_K),
     [1]  = ACTION_LAYER_SET_CLEAR(0),
     [2]  = ACTION_LAYER_OFF(4, ON_BOTH),
     [3]  = ACTION_MODS_KEY(MOD_LGUI,KC_G),
@@ -140,10 +140,8 @@ static const uint16_t PROGMEM fn_actions_2[] = {
 
 //sublime supplemental layer
 static const uint16_t PROGMEM fn_actions_3[] = {
-    //[4]  = ACTION_LAYER_TAP_KEY(1, KC_F),
-    //[5] = ACTION_LAYER_TAP_KEY(3, KC_S),
-    [1] = ACTION_MODS_KEY(MOD_LCTL,KC_COMM),
-    [3] = ACTION_MODS_KEY(MOD_LCTL,KC_DOT),
+    [5] = ACTION_MODS_KEY(MOD_LCTL,KC_COMM),
+    [4] = ACTION_MODS_KEY(MOD_LCTL,KC_DOT),
     [0] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_COMM),
     [2] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_DOT),
 };
