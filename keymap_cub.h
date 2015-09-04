@@ -71,8 +71,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  TRNS,TRNS,TRNS,
         // right hand
              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-             TRNS,F19,FN5,FN3,FN4,TRNS,TRNS,
-                  F23,FN0,FN1,FN2,TRNS,TRNS,
+             TRNS,F19,FN5,UP,FN4,TRNS,TRNS,
+                  F23,FN0,DOWN,FN2,TRNS,TRNS,
              TRNS,F24,TRNS,TRNS,TRNS,TRNS,TRNS,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,
@@ -142,10 +142,10 @@ static const uint16_t PROGMEM fn_actions_2[] = {
 static const uint16_t PROGMEM fn_actions_3[] = {
     //[4]  = ACTION_LAYER_TAP_KEY(1, KC_F),
     //[5] = ACTION_LAYER_TAP_KEY(3, KC_S),
-    [0] = ACTION_MODS_KEY(MOD_LCTL,KC_COMM),
-    [2] = ACTION_MODS_KEY(MOD_LCTL,KC_DOT),
-    [1] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_COMM),
-    [3] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_DOT),
+    [1] = ACTION_MODS_KEY(MOD_LCTL,KC_COMM),
+    [3] = ACTION_MODS_KEY(MOD_LCTL,KC_DOT),
+    [0] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_COMM),
+    [2] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_DOT),
 };
 
 #define FN_ACTIONS_SIZE     (sizeof(fn_actions)   / sizeof(fn_actions[0]))
