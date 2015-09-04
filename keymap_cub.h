@@ -26,7 +26,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TRNS,TRNS,F14,TRNS,TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  TRNS,
     TRNS,TRNS,TRNS,TRNS,BTN1,
-                                  TRNS,TRNS,
+                                  BTN1,TRNS,
                                        TRNS,
                             TRNS, TRNS,TRNS,
     // right hand
@@ -76,7 +76,7 @@ static const uint16_t PROGMEM fn_actions[] = {
     [8]  = ACTION_MODS_KEY(MOD_LCTL, KC_SCLN), //Launchy Ctrl+;
     [9]  = ACTION_LAYER_TAP_KEY(1, KC_F), //Mouse Layer or D
     //[10] = ACTION_LAYER_TAP_KEY(4, KC_L), //sublime right hand
-    [11] = ACTION_LAYER_TAP_KEY(4, KC_SPC), //sublime expert layer
+    [11] = ACTION_LAYER_TAP_KEY(2, KC_SPC), //sublime expert layer
 };
 
 //Mouse Layer
