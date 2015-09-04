@@ -3,7 +3,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         BSPC, 1,   2,   3,   4,   5,   6,
         TAB,  Q,   W,   E,   R,   T,   H,
-        PENT, A,   S,   D,  FN9,  G,
+        PENT, A,   FN10,   D,  FN9,  G,
         LSFT, Z,   X,   C,   V,   B,   N,
         LBRC,LALT,LGUI,INS,FN11,
                                        ESC,FN3,
@@ -55,11 +55,11 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 HOME,LEFT,DOWN,RIGHT,END,TRNS,
            TRNS,FN27,FN24,FN28,FN29,TRNS,TRNS,
                      TRNS,FN25,FN26,TRNS,FN30,
-        F19,TRNS,
-        F23,
-        F24,TRNS,TRNS
+        TRNS,TRNS,
+        TRNS,
+        TRNS,TRNS,TRNS
     ),
-        KEYMAP(  // LayerN: fully transparent
+        KEYMAP(  // Sublime Supplemental Layer
         // left hand
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -71,9 +71,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  TRNS,TRNS,TRNS,
         // right hand
              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-                  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+             TRNS,F19,FN5,FN3,FN4,TRNS,TRNS,
+                  F23,FN0,FN1,FN2,TRNS,TRNS,
+             TRNS,F24,TRNS,TRNS,TRNS,TRNS,TRNS,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,
         TRNS,
@@ -92,6 +92,7 @@ static const uint16_t PROGMEM fn_actions[] = {
     [6]  = ACTION_MODS_KEY(MOD_LSFT, KC_0), //)
     [8]  = ACTION_MODS_KEY(MOD_LCTL, KC_SCLN), //Launchy Ctrl+;
     [9]  = ACTION_LAYER_TAP_KEY(1, KC_F), //Mouse Layer or D
+    [10] = ACTION_LAYER_TAP_KEY(3, KC_S), //sublime expert layer=
     [11] = ACTION_LAYER_TAP_KEY(2, KC_SPC), //sublime expert layer
 };
 
@@ -115,7 +116,6 @@ static const uint16_t PROGMEM fn_actions_2[] = {
     [7]  = ACTION_MODS_KEY(MOD_LCTL,KC_T),
     [8]  = ACTION_MODS_KEY(MOD_LALT,KC_MINS),
     [9]  = ACTION_MODS_KEY(MOD_LCTL,KC_A),
-    [10] = ACTION_LAYER_TAP_KEY(3, KC_S), //sublime expert layer
     [12] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_LBRC),
     [13] = ACTION_MODS_KEY(MOD_LCTL,KC_G),
     [14] = ACTION_MODS_KEY(MOD_LCTL,KC_Z),
@@ -136,6 +136,16 @@ static const uint16_t PROGMEM fn_actions_2[] = {
     [29] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_DOT),
     [30] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_H),
     [31] = ACTION_LAYER_SET_CLEAR(4)
+};
+
+//sublime supplemental layer
+static const uint16_t PROGMEM fn_actions_3[] = {
+    //[4]  = ACTION_LAYER_TAP_KEY(1, KC_F),
+    //[5] = ACTION_LAYER_TAP_KEY(3, KC_S),
+    [0] = ACTION_MODS_KEY(MOD_LCTL,KC_COMM),
+    [2] = ACTION_MODS_KEY(MOD_LCTL,KC_DOT),
+    [1] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_COMM),
+    [3] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_DOT),
 };
 
 #define FN_ACTIONS_SIZE     (sizeof(fn_actions)   / sizeof(fn_actions[0]))
