@@ -1,9 +1,13 @@
+/*
+* Ergodox Keyboard layer(s) layout
+*/
 static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    KEYMAP(  // Layer0: default
+    // Layer0: default
+    KEYMAP(
         // left hand
         BSPC, 1,   2,   3,   4,   5,   6,
         TAB,  Q,   W,   E,   R,   T,   H,
-        PENT, A,   FN10,   D,  FN9,  G,
+        PENT, A,   S,   D,  FN9,  G,
         LSFT, Z,   X,   C,   V,   B,   N,
         LBRC,LALT,LGUI,INS,FN11,
                                        ESC,FN3,
@@ -19,7 +23,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         QUOT,
         ESC, LALT, RCTL
     ),
-    KEYMAP(  // Layer1: Mouse Layer holding down F
+    // Layer1: Mouse Layer holding down F
+    KEYMAP(
     // left hand
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  TRNS,
@@ -31,50 +36,31 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                             BTN1, TRNS,TRNS,
     // right hand
          FN1,FN2,TRNS,TRNS,TRNS,TRNS,TRNS,
-         F15,TRNS,  P7,  P8,  P9,  TRNS,TRNS,
-             TRNS,  P4,  P2,  P6,  TRNS,TRNS,
-         F16,TRNS,  P1,  P2,  P3,  TRNS,TRNS,
+         F15,F19,  P7,  P8,  P9,  TRNS,TRNS,
+             F23,  P4,  P2,  P6,  TRNS,TRNS,
+         F16,F24,  P1,  P2,  P3,  TRNS,TRNS,
                    BTN1,TRNS,TRNS,TRNS,TRNS,
-    F19,TRNS,
-    F23,
-    F24,F17,BTN1
+    TRNS,TRNS,
+    TRNS,
+    TRNS,F17,BTN1
     ),
-    KEYMAP(  // Layer2: Sublime Expert new 08-2015
+    // Layer2: Sublime Expert new 08-2015 holding down Spacebar
+    KEYMAP(
         // left hand
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        GRV,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,FN3,FN4,FN5,FN6,FN7,FN8,
-        TRNS,FN9,FN10,FN0,FN12,FN13,
+        TRNS,FN9,FN10,FN0,TRNS,FN13,
         TRNS,FN14,FN15,FN16,FN17,FN18,FN19,
         TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
                                  TRNS,FN0,FN31,
         // right hand
-           FN3,FN4,TRNS,TRNS,TRNS,TRNS,TRNS,
-           TRNS,FN20,FN21,UP,FN22,FN23,FN2,
+           FN3,FN4,TRNS,TRNS,FN21,FN12,TRNS,
+           TRNS,FN20,FN22,UP,FN23,FN30,BSLS,
                 HOME,LEFT,DOWN,RIGHT,END,TRNS,
            TRNS,FN27,FN24,FN28,FN29,TRNS,TRNS,
-                     TRNS,FN25,FN26,TRNS,FN30,
-        TRNS,TRNS,
-        TRNS,
-        TRNS,TRNS,TRNS
-    ),
-        KEYMAP(  // Sublime Supplemental Layer
-        // left hand
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,
-                                      TRNS,TRNS,
-                                           TRNS,
-                                 TRNS,TRNS,TRNS,
-        // right hand
-             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-             TRNS,F19,FN5,UP,FN4,TRNS,TRNS,
-                  F23,FN0,DOWN,FN2,TRNS,TRNS,
-             TRNS,F24,TRNS,TRNS,TRNS,TRNS,TRNS,
-                       TRNS,TRNS,TRNS,TRNS,TRNS,
+                     TRNS,FN25,FN26,TRNS,TRNS,
         TRNS,TRNS,
         TRNS,
         TRNS,TRNS,TRNS
@@ -82,21 +68,20 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 /*
- * Fn action definition
- */
+* Layer Functions
+*/
 
-//Default
+//Default Layer 0
 static const uint16_t PROGMEM fn_actions[] = {
     [3]  = ACTION_MODS_KEY(MOD_LSFT, KC_LBRC), // {
     [5]  = ACTION_MODS_KEY(MOD_LSFT, KC_RBRC), //}
     [6]  = ACTION_MODS_KEY(MOD_LSFT, KC_0), //)
     [8]  = ACTION_MODS_KEY(MOD_LCTL, KC_SCLN), //Launchy Ctrl+;
     [9]  = ACTION_LAYER_TAP_KEY(1, KC_F), //Mouse Layer or D
-    [10] = ACTION_LAYER_TAP_KEY(3, KC_S), //sublime expert layer=
     [11] = ACTION_LAYER_TAP_KEY(2, KC_SPC), //sublime expert layer
 };
 
-//Mouse Layer
+//Mouse Layer 1
 static const uint16_t PROGMEM fn_actions_1[] = {
     [1]  = ACTION_MODS_KEY(MOD_LGUI, KC_LEFT),
     [2]  = ACTION_MODS_KEY(MOD_LGUI, KC_RIGHT),
@@ -104,11 +89,9 @@ static const uint16_t PROGMEM fn_actions_1[] = {
     [7]  = ACTION_MODS_KEY(MOD_LCTL, KC_END),
 };
 
-//sublime expert layer
+//Sublime Layer 2
 static const uint16_t PROGMEM fn_actions_2[] = {
     [0]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_K),
-    [1]  = ACTION_LAYER_SET_CLEAR(0),
-    [2]  = ACTION_LAYER_OFF(4, ON_BOTH),
     [3]  = ACTION_MODS_KEY(MOD_LGUI,KC_G),
     [4]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_G),
     [5]  = ACTION_MODS_KEY(MOD_LALT,KC_E),
@@ -135,28 +118,19 @@ static const uint16_t PROGMEM fn_actions_2[] = {
     [28] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_COMM),
     [29] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_DOT),
     [30] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_H),
-    [31] = ACTION_LAYER_SET_CLEAR(4)
-};
-
-//sublime supplemental layer
-static const uint16_t PROGMEM fn_actions_3[] = {
-    [5] = ACTION_MODS_KEY(MOD_LCTL,KC_COMM),
-    [4] = ACTION_MODS_KEY(MOD_LCTL,KC_DOT),
-    [0] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_COMM),
-    [2] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_DOT),
 };
 
 #define FN_ACTIONS_SIZE     (sizeof(fn_actions)   / sizeof(fn_actions[0]))
 #define FN_ACTIONS_1_SIZE   (sizeof(fn_actions_1) / sizeof(fn_actions_1[0]))
 #define FN_ACTIONS_2_SIZE   (sizeof(fn_actions_2) / sizeof(fn_actions_2[0]))
-#define FN_ACTIONS_3_SIZE   (sizeof(fn_actions_3) / sizeof(fn_actions_3[0]))
 
 /*
  * translates Fn keycode to action
  * for some layers, use different translation table
  */
-action_t keymap_fn_to_action(uint8_t keycode)
-{
+
+action_t keymap_fn_to_action(uint8_t keycode) {
+
     uint8_t layer = biton32(layer_state);
 
     action_t action;
@@ -168,10 +142,6 @@ action_t keymap_fn_to_action(uint8_t keycode)
 
     if (layer == 2 && FN_INDEX(keycode) < FN_ACTIONS_2_SIZE) {
         action.code = pgm_read_word(&fn_actions_2[FN_INDEX(keycode)]);
-    }
-
-    if (layer == 3 && FN_INDEX(keycode) < FN_ACTIONS_3_SIZE) {
-        action.code = pgm_read_word(&fn_actions_3[FN_INDEX(keycode)]);
     }
 
     if (action.code == ACTION_NO && FN_INDEX(keycode) < FN_ACTIONS_SIZE) {
