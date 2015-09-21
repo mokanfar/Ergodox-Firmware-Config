@@ -68,13 +68,13 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KEYMAP(  // Layer3: InDesign
         // left hand
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN12,
-        TRNS,FN8,FN6,FN7,TRNS,TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,FN5,M,
+        FN0,TRNS,TRNS,TRNS,TRNS,TRNS,FN12,
+        TRNS,TRNS,FN8,FN6,FN7,TRNS,
+        TRNS,FN15,TRNS,TRNS,TRNS,FN5,M,
         FN3,FN4,FN10,FN9,SPC,
                                       TRNS,FN13,
                                            FN14,
-                                 TRNS,LALT,FN1,
+                                 TRNS,LALT,TRNS,
         // right hand
              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
              TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN0,
@@ -144,7 +144,7 @@ static const uint16_t PROGMEM fn_actions_2[] = {
 static const uint16_t PROGMEM fn_actions_3[] = {
     [0]  = ACTION_LAYER_SET_CLEAR(0),
     [1]  = ACTION_LAYER_SET_CLEAR(0),
-    [3] = ACTION_MODS_KEY(MOD_LGUI,KC_E),//windows+E
+    [3] = ACTION_MODS_KEY(MOD_LGUI,KC_F16),//windows+F16 windows explorer
     [4] = ACTION_MODS_KEY(MOD_LGUI,KC_F14),//win+f14
     [5] = ACTION_MODS_KEY(MOD_LCTL,KC_U),//ctrl+u
     [6] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT,KC_F5),// ctrl+alt+f5 / shfit+ctrl+alt+f5 horiz/vert middle
@@ -154,8 +154,8 @@ static const uint16_t PROGMEM fn_actions_3[] = {
     [10] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT,KC_F7),//distribute evenly horiz
     [12] = ACTION_MODS_KEY(MOD_LCTL,KC_J),//go to page
     [13] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT,KC_8),//zoom in
-    [14] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT,KC_9)//zoom out
-
+    [14] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT,KC_9),//zoom out
+    [15] = ACTION_MODS_KEY(MOD_LCTL,KC_Z)//undo
 };
 
 #define FN_ACTIONS_SIZE     (sizeof(fn_actions)   / sizeof(fn_actions[0]))
