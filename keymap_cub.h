@@ -85,6 +85,26 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,
         TRNS,TRNS,TRNS
     ),
+    KEYMAP(  // Layer4: photoshop layer
+        // left hand
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,TRNS,TRNS,TRNS,
+                                      TRNS,TRNS,
+                                           TRNS,
+                                 TRNS,TRNS,TRNS,
+        // right hand
+             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+                  TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+             TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+                       TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,TRNS,
+        TRNS,
+        TRNS,TRNS,TRNS
+    ),
 };
 
 /*
@@ -158,10 +178,26 @@ static const uint16_t PROGMEM fn_actions_3[] = {
     [15] = ACTION_MODS_KEY(MOD_LCTL,KC_Z)//undo
 };
 
+static const uint16_t PROGMEM fn_actions_4[] = {
+    []  = ACTION_LAYER_SET_CLEAR(0),
+    [] = ACTION_MODS_KEY(MOD_LCTL,KC_),//
+    [] = ACTION_MODS_KEY(MOD_LCTL,KC_),//
+    [] = ACTION_MODS_KEY(MOD_LCTL,KC_),//
+    [] = ACTION_MODS_KEY(MOD_LCTL,KC_),//
+    [] = ACTION_MODS_KEY(MOD_LCTL,KC_),//
+    [] = ACTION_MODS_KEY(MOD_LCTL,KC_),//
+    [] = ACTION_MODS_KEY(MOD_LCTL,KC_),//
+    [] = ACTION_MODS_KEY(MOD_LCTL,KC_),//
+    [] = ACTION_MODS_KEY(MOD_LCTL,KC_),//
+    [] = ACTION_MODS_KEY(MOD_LCTL,KC_),//
+    [] = ACTION_MODS_KEY(MOD_LCTL,KC_),//
+};
+
 #define FN_ACTIONS_SIZE     (sizeof(fn_actions)   / sizeof(fn_actions[0]))
 #define FN_ACTIONS_1_SIZE   (sizeof(fn_actions_1) / sizeof(fn_actions_1[0]))
 #define FN_ACTIONS_2_SIZE   (sizeof(fn_actions_2) / sizeof(fn_actions_2[0]))
 #define FN_ACTIONS_3_SIZE   (sizeof(fn_actions_3) / sizeof(fn_actions_3[0]))
+#define FN_ACTIONS_4_SIZE   (sizeof(fn_actions_4) / sizeof(fn_actions_4[0]))
 
 /*
  * translates Fn keycode to action
@@ -171,7 +207,6 @@ static const uint16_t PROGMEM fn_actions_3[] = {
 action_t keymap_fn_to_action(uint8_t keycode) {
 
     uint8_t layer = biton32(layer_state);
-
     action_t action;
     action.code = ACTION_NO;
 
@@ -185,6 +220,10 @@ action_t keymap_fn_to_action(uint8_t keycode) {
 
     if (layer == 3 && FN_INDEX(keycode) < FN_ACTIONS_3_SIZE) {
         action.code = pgm_read_word(&fn_actions_3[FN_INDEX(keycode)]);
+    }
+
+    if (layer == 4 && FN_INDEX(keycode) < FN_ACTIONS_4_SIZE) {
+        action.code = pgm_read_word(&fn_actions_4[FN_INDEX(keycode)]);
     }
 
     if (action.code == ACTION_NO && FN_INDEX(keycode) < FN_ACTIONS_SIZE) {
