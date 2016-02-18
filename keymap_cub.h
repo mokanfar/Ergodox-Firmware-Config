@@ -9,15 +9,15 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TAB,  Q,   W,   E,   R,   T,   H,
         PENT, A,   S,   D,  FN9,  G,
         LSFT, Z,   X,   C,   V,   B,   N,
-        LBRC,LALT,LGUI,INS,FN11,
+        BTN4,LALT,LGUI,INS,FN11,
                                        ESC,FN3,
                                            FN4,
                                  LCTL, FN8, FN1,
         // right hand
         7,  8,  9,  0,  MINS,   EQL,    BSPC,
-        PMNS, Y,   U,   I,   O,   P,     BTN4,
+        WH_U, Y,   U,   I,   O,   P,     BTN4,
               H,   J,   K,   L,   SCLN, ENTER,
-        PPLS, N,   M,  COMM,DOT, SLSH, LSHIFT,
+        WH_D, N,   M,  COMM,DOT, SLSH, LSHIFT,
                 FN11, INS, RGUI, DELETE, RBRC,
         FN5,FN6,
         QUOT,
@@ -27,20 +27,20 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Layer1: Mouse Layer
     KEYMAP(
         // left hand
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        TRNS,F14,F17,F18,F19,F20,F21,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  TRNS,
         TRNS,TRNS,F14,TRNS,TRNS,TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  TRNS,
         TRNS,TRNS,TRNS,TRNS,BTN1,
                                       TRNS,TRNS,
                                            TRNS,
-                                BTN1, TRNS,TRNS,
+                                BTN1, FN17,TRNS,
         // right hand
-        FN1,FN2,TRNS,TRNS,TRNS,TRNS,TRNS,
-        F15,F19,  P7,  P8,  P9,  TRNS,TRNS,
-            F23,  P4,  P2,  P6,  TRNS,TRNS,
+        F22,F23,F24,TRNS,TRNS,TRNS,TRNS,
+        F15,F19,  P7,  MS_U,  P9,  TRNS,TRNS,
+            F23,  MS_L,  MS_D,  MS_R,  TRNS,TRNS,
         F16,F24,  P1,  P2,  P3,  TRNS,TRNS,
-               BTN1,TRNS,TRNS,TRNS,TRNS,
+               BTN1,TRNS,ACL0,ACL1,ACL2,
         TRNS,TRNS,
         TRNS,
         TRNS,F17,BTN1
@@ -51,7 +51,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // left hand
         GRV,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
         F17,FN3,FN4,FN5,FN6,FN7,FN8,
-        TRNS,FN9,FN10,FN0,TRNS, FN13,
+        TRNS,FN9,FN10,FN0,TRNS, F19,
         TRNS,FN14,FN15,FN16,FN17,FN18,FN19,
         TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
@@ -124,7 +124,7 @@ static const uint16_t PROGMEM fn_actions[] = {
     [3]  = ACTION_MODS_KEY(MOD_LSFT, KC_LBRC), // {
     [5]  = ACTION_MODS_KEY(MOD_LSFT, KC_RBRC), //}
     [6]  = ACTION_MODS_KEY(MOD_LSFT, KC_0), //)
-    [8]  = ACTION_MODS_KEY(MOD_LCTL, KC_SCLN), //Launchy Ctrl+;
+    [8]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_RBRC), //Launchy Ctrl+;
     [9]  = ACTION_LAYER_TAP_KEY(1, KC_F), //Mouse Layer or D
     [11] = ACTION_LAYER_TAP_KEY(2, KC_SPC), //sublime expert layer
     [16] = ACTION_LAYER_MOMENTARY(0)
@@ -133,6 +133,7 @@ static const uint16_t PROGMEM fn_actions[] = {
 // Mouse Layer 1
 static const uint16_t PROGMEM fn_actions_1[] = {
     [1]  = ACTION_MODS_KEY(MOD_LGUI, KC_LEFT),
+    [17] = ACTION_MODS_KEY(MOD_LGUI, KC_S),
     [2]  = ACTION_MODS_KEY(MOD_LGUI, KC_RIGHT)
 };
 
