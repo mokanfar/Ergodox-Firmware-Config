@@ -27,7 +27,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Layer1: Mouse Layer
     KEYMAP(
         // left hand
-        TRNS,F14,F17,F18,F19,F20,F21,
+        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  TRNS,
         TRNS,TRNS,F14,TRNS,TRNS,TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  TRNS,
@@ -36,7 +36,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                            TRNS,
                                 BTN1, FN17,TRNS,
         // right hand
-        F22,F23,F24,TRNS,TRNS,TRNS,TRNS,
+        FN1,FN2,TRNS,TRNS,TRNS,TRNS,TRNS,
         F15,F19,  P7,  MS_U,  P9,  TRNS,TRNS,
             F23,  MS_L,  MS_D,  MS_R,  TRNS,TRNS,
         F16,F24,  P1,  P2,  P3,  TRNS,TRNS,
@@ -49,9 +49,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Layer2: Sublime layer
     KEYMAP(
         // left hand
-        GRV,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        GRV,F20,F21,F22,F23,TRNS,TRNS,
         F17,FN3,FN4,FN5,FN6,FN7,FN8,
-        TRNS,FN9,FN10,FN0,TRNS, F19,
+        TRNS,FN9,FN10,FN0,TRNS, F23,
         TRNS,FN14,FN15,FN16,FN17,FN18,FN19,
         TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
@@ -94,7 +94,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(
         // left hand
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-        FN1, TRNS,  M,  K,  W,  TRNS,  FN2,
+        FN1, TRNS,  W,  K,  W,  TRNS,  FN2,
         TRNS,TRNS, FN4, FN5, FN6,TRNS,
         TRNS, TRNS,TRNS,TRNS,TRNS, TRNS, FN3,
         FN9,FN10,FN11,FN12,SPC,
