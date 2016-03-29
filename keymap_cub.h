@@ -9,8 +9,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TAB,  Q,   W,   E,   R,   T,   H,
         PENT, A,   S,   D,  FN9,  G,
         LSFT, Z,   X,   C,   V,   B,   N,
-        BTN4,LALT,LGUI,INS,FN11,
-                                       ESC,FN3,
+        BTN4,FN4,LGUI,INS,FN11,
+                                       ESC,LBRC,
                                            FN4,
                                  LCTL, FN8, FN1,
         // right hand
@@ -19,12 +19,12 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
               H,   J,   K,   L,   SCLN, ENTER,
         WH_D, N,   M,  COMM,DOT, SLSH, LSHIFT,
                 FN11, INS, RGUI, DELETE, RBRC,
-        FN5,FN6,
+        RBRC,FN5,
         QUOT,
         TRNS, LALT, RCTL
     ),
 
-    // Layer1: Mouse Layer
+    // Layer1: Mouse Layer hold down F key
     KEYMAP(
         // left hand
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -36,22 +36,22 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                            TRNS,
                                 BTN1, FN17,TRNS,
         // right hand
-        FN1,FN2,TRNS,TRNS,TRNS,TRNS,TRNS,
-        F15,F19,  P7,  MS_U,  P9,  TRNS,TRNS,
-            F23,  MS_L,  MS_D,  MS_R,  TRNS,TRNS,
-        F16,F24,  P1,  P2,  P3,  TRNS,TRNS,
+        FN1,FN2,FN3,FN4,FN5,FN6,TRNS,
+        F15, F19,  P7,  P8,  P9,  TRNS,TRNS,
+             F23,  P4,  P2,  P6,  TRNS,TRNS,
+        F16, F24,  P1,  P2,  P3,  TRNS,TRNS,
                BTN1,TRNS,ACL0,ACL1,ACL2,
         TRNS,TRNS,
         TRNS,
-        TRNS,F17,BTN1
+        TRNS,BTN2,BTN1
     ),
 
-    // Layer2: Sublime layer
+    // Layer2: Sublime layer hold down space key
     KEYMAP(
         // left hand
         GRV,F20,F21,F22,F23,TRNS,TRNS,
         F17,FN3,FN4,FN5,FN6,FN7,FN8,
-        TRNS,FN9,FN10,FN0,TRNS, F23,
+        TRNS,FN9,FN10,FN0,TRNS, FN31,
         TRNS,FN14,FN15,FN16,FN17,FN18,FN19,
         TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
@@ -68,7 +68,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,TRNS,TRNS
     ),
 
-    // Layer3: InDesign
+    // Layer3: InDesign toggled
     KEYMAP(
         // left hand
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -88,28 +88,6 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TRNS,TRNS,
         TRNS,
         FN16,TRNS,TRNS
-    ),
-
-    // Layer4: Photoshop Layer
-    KEYMAP(
-        // left hand
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-        FN1, TRNS,  W,  K,  W,  TRNS,  FN2,
-        TRNS,TRNS, FN4, FN5, FN6,TRNS,
-        TRNS, TRNS,TRNS,TRNS,TRNS, TRNS, FN3,
-        FN9,FN10,FN11,FN12,SPC,
-                                      TRNS,FN13,
-                                           FN14,
-                                 TRNS,LALT,TRNS,
-        // right hand
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-        FN8,   TRNS,TRNS,UP,TRNS,TRNS,TRNS,
-            TRNS,LEFT,DOWN,RIGHT,TRNS,TRNS,
-        Z,   TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
-                TRNS,TRNS,TRNS,TRNS,TRNS,
-        FN17,TRNS,
-        TRNS,
-        FN16,TRNS,TRNS
     )
 };
 
@@ -122,7 +100,8 @@ static const uint16_t PROGMEM fn_actions[] = {
     [1]  = ACTION_LAYER_TOGGLE(3), //indesign layer
     [2]  = ACTION_LAYER_TOGGLE(4), //photoshop layer
     [3]  = ACTION_MODS_KEY(MOD_LSFT, KC_LBRC), // {
-    [5]  = ACTION_MODS_KEY(MOD_LSFT, KC_RBRC), //}
+    [4]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_L), //launchy
+    [5]  = ACTION_MODS_KEY(MOD_LGUI, KC_S), //}
     [6]  = ACTION_MODS_KEY(MOD_LSFT, KC_0), //)
     [8]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_RBRC), //Launchy Ctrl+;
     [9]  = ACTION_LAYER_TAP_KEY(1, KC_F), //Mouse Layer or D
@@ -130,14 +109,18 @@ static const uint16_t PROGMEM fn_actions[] = {
     [16] = ACTION_LAYER_MOMENTARY(0)
 };
 
-// Mouse Layer 1
+// Mouse Layer 1 hold down F key
 static const uint16_t PROGMEM fn_actions_1[] = {
     [1]  = ACTION_MODS_KEY(MOD_LGUI, KC_LEFT),
     [17] = ACTION_MODS_KEY(MOD_LGUI, KC_S),
-    [2]  = ACTION_MODS_KEY(MOD_LGUI, KC_RIGHT)
+    [2]  = ACTION_MODS_KEY(MOD_LGUI, KC_RIGHT),
+    [3]  = ACTION_MODS_KEY(MOD_LCTL, KC_F20),
+    [4]  = ACTION_MODS_KEY(MOD_LCTL, KC_F21),
+    [5]  = ACTION_MODS_KEY(MOD_LCTL, KC_F22),
+    [6]  = ACTION_MODS_KEY(MOD_LCTL, KC_F23)
 };
 
-// Sublime Layer 2
+// Sublime Layer 2 hold down space key
 static const uint16_t PROGMEM fn_actions_2[] = {
     [0]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_K),
     [3]  = ACTION_MODS_KEY(MOD_LGUI,KC_G),
@@ -166,9 +149,10 @@ static const uint16_t PROGMEM fn_actions_2[] = {
     [28] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_COMM),
     [29] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_DOT),
     [30] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_H),
+    [31] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_F14)
 };
 
-// InDesign Layer 3
+// InDesign Layer 3 toggled
 static const uint16_t PROGMEM fn_actions_3[] = {
     [0]  = ACTION_LAYER_SET_CLEAR(0),
     [1]  = ACTION_LAYER_TOGGLE(4),
@@ -187,7 +171,7 @@ static const uint16_t PROGMEM fn_actions_3[] = {
     [16] = ACTION_LAYER_MOMENTARY(0),
 };
 
-// Photoshop layer 4
+// Photoshop layer 4 toggled
 static const uint16_t PROGMEM fn_actions_4[] = {
     [1]  = ACTION_LAYER_SET_CLEAR(0),//Layer 0
     [2]  = ACTION_MODS_KEY(MOD_LCTL,KC_F3),//Layer style/Layer Mask
@@ -199,7 +183,6 @@ static const uint16_t PROGMEM fn_actions_4[] = {
     [8]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_D),//Save for web
     [9]  = ACTION_MODS_KEY(MOD_LGUI,KC_F16),//Activate Explorer i
     [10] = ACTION_MODS_KEY(MOD_LGUI,KC_F22),//Activate Photoshop
-    //[11] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_F7),//Distribute evenly vertical
     [12] = ACTION_MODS_KEY(MOD_LCTL,KC_F7),//Distribute evenly horizontal
     [13] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_F10),//+1/Top Layer
     [14] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_F9),//-1/Bottom layer
