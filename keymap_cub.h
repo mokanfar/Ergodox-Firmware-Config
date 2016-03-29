@@ -171,31 +171,12 @@ static const uint16_t PROGMEM fn_actions_3[] = {
     [16] = ACTION_LAYER_MOMENTARY(0),
 };
 
-// Photoshop layer 4 toggled
-static const uint16_t PROGMEM fn_actions_4[] = {
-    [1]  = ACTION_LAYER_SET_CLEAR(0),//Layer 0
-    [2]  = ACTION_MODS_KEY(MOD_LCTL,KC_F3),//Layer style/Layer Mask
-    [3]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_N),//New Layer/Inverse
-    [4]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT,KC_F4),//Bottom/Left Align
-    [5]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT,KC_F5),//Vertical/Horizontal Align
-    [6]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT,KC_F6),//Top/Right align
-    [7]  = ACTION_MODS_KEY(MOD_LCTL,KC_Z),//Undo
-    [8]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_D),//Save for web
-    [9]  = ACTION_MODS_KEY(MOD_LGUI,KC_F16),//Activate Explorer i
-    [10] = ACTION_MODS_KEY(MOD_LGUI,KC_F22),//Activate Photoshop
-    [12] = ACTION_MODS_KEY(MOD_LCTL,KC_F7),//Distribute evenly horizontal
-    [13] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_F10),//+1/Top Layer
-    [14] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_F9),//-1/Bottom layer
-    [16] = ACTION_LAYER_MOMENTARY(0),
-    [17] = ACTION_MODS_KEY(MOD_LCTL,KC_D)//deselect
 
-};
 
 #define FN_ACTIONS_SIZE     (sizeof(fn_actions)   / sizeof(fn_actions[0]))
 #define FN_ACTIONS_1_SIZE   (sizeof(fn_actions_1) / sizeof(fn_actions_1[0]))
 #define FN_ACTIONS_2_SIZE   (sizeof(fn_actions_2) / sizeof(fn_actions_2[0]))
 #define FN_ACTIONS_3_SIZE   (sizeof(fn_actions_3) / sizeof(fn_actions_3[0]))
-#define FN_ACTIONS_4_SIZE   (sizeof(fn_actions_4) / sizeof(fn_actions_4[0]))
 
 /*
  * translates Fn keycode to action
@@ -218,10 +199,6 @@ action_t keymap_fn_to_action(uint8_t keycode) {
 
     if (layer == 3 && FN_INDEX(keycode) < FN_ACTIONS_3_SIZE) {
         action.code = pgm_read_word(&fn_actions_3[FN_INDEX(keycode)]);
-    }
-
-    if (layer == 4 && FN_INDEX(keycode) < FN_ACTIONS_4_SIZE) {
-        action.code = pgm_read_word(&fn_actions_4[FN_INDEX(keycode)]);
     }
 
     if (action.code == ACTION_NO && FN_INDEX(keycode) < FN_ACTIONS_SIZE) {
