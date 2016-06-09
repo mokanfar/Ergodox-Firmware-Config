@@ -15,7 +15,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  LCTL, FN8, FN1,
         // right hand
         7,  8,  9,  0,  MINS,   EQL,    BSPC,
-        WH_U, Y,   U,   I,   O,   P,     BTN4,
+        WH_U, Y,   U,   I,   O,   P,     F18,
               H,   J,   K,   L,   SCLN, ENTER,
         WH_D, N,   M,  COMM,DOT, SLSH, LSHIFT,
                 FN11, INS, RGUI, DELETE, RBRC,
@@ -40,7 +40,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         F15, F19,  P7,  P8,  P9,  TRNS,TRNS,
              F23,  P4,  P2,  P6,  TRNS,TRNS,
         F16, F24,  P1,  P2,  P3,  TRNS,TRNS,
-               BTN1,TRNS,ACL0,ACL1,ACL2,
+               BTN1,TRNS,ACL0,NLCK,SLCK,
         TRNS,TRNS,
         TRNS,
         TRNS,BTN2,BTN1
@@ -49,7 +49,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // Layer2: Sublime layer hold down space key
     KEYMAP(
         // left hand
-        GRV,F20,F21,F22,F23,TRNS,TRNS,
+        GRV,FN1,FN2,F22,F23,TRNS,TRNS,
         F17,FN3,FN4,FN5,FN6,FN7,FN8,
         TRNS,FN9,FN10,FN0,TRNS, FN31,
         TRNS,FN14,FN15,FN16,FN17,FN18,FN19,
@@ -63,7 +63,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             HOME,LEFT,DOWN,RIGHT,END,TRNS,
         TRNS,FN27,FN24,FN28,FN29,TRNS,TRNS,
                  TRNS,FN25,FN26,TRNS,TRNS,
-        TRNS,TRNS,
+        TRNS,DELETE,
         TRNS,
         TRNS,TRNS,TRNS
     ),
@@ -123,6 +123,8 @@ static const uint16_t PROGMEM fn_actions_1[] = {
 // Sublime Layer 2 hold down space key
 static const uint16_t PROGMEM fn_actions_2[] = {
     [0]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_K),
+    [1]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_TAB),
+    [2]  = ACTION_MODS_KEY(MOD_LCTL,KC_TAB),
     [3]  = ACTION_MODS_KEY(MOD_LGUI,KC_G),
     [4]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_G),
     [5]  = ACTION_MODS_KEY(MOD_LALT,KC_E),
@@ -148,6 +150,7 @@ static const uint16_t PROGMEM fn_actions_2[] = {
     [27] = ACTION_MODS_KEY(MOD_LSFT|MOD_LALT,KC_M),
     [28] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_COMM),
     [29] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_DOT),
+
     [30] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_H),
     [31] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_F14)
 };
@@ -155,7 +158,7 @@ static const uint16_t PROGMEM fn_actions_2[] = {
 // InDesign Layer 3 toggled
 static const uint16_t PROGMEM fn_actions_3[] = {
     [0]  = ACTION_LAYER_SET_CLEAR(0),
-    [1]  = ACTION_LAYER_TOGGLE(4),
+    [1]  = ACTION_LAYER_SET_CLEAR(0),
     [3]  = ACTION_MODS_KEY(MOD_LGUI,KC_F16),//windows+F16 windows explorer
     [4]  = ACTION_MODS_KEY(MOD_LGUI,KC_F14),//win+f14
     [5]  = ACTION_MODS_KEY(MOD_LCTL,KC_U),//ctrl+u
@@ -165,8 +168,8 @@ static const uint16_t PROGMEM fn_actions_3[] = {
     [9]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT,KC_F8),//distribute evenly vert
     [10] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT,KC_F7),//distribute evenly horiz
     [12] = ACTION_MODS_KEY(MOD_LCTL,KC_J),//go to page
-    [13] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT,KC_8),//zoom in
-    [14] = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT,KC_9),//zoom out
+    [13] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_F10),//zoom in
+    [14] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_F9),//zoom out
     [15] = ACTION_MODS_KEY(MOD_LCTL,KC_Z),//undo
     [16] = ACTION_LAYER_MOMENTARY(0),
 };
