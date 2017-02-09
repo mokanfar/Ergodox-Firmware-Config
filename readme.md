@@ -1,6 +1,10 @@
 Customized TMK Firmware Ergodox Keyboard
 =======
 
+
+ make -f Makefile.lufa clean
+ make -f Makefile.lufa cub
+
 Keycode Symbol Table
 -------
 Keycodes are defined in `common/keycode.h`.

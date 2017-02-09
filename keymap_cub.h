@@ -21,25 +21,25 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 FN11, INS, RGUI, DELETE, RBRC,
         RBRC,FN5,
         QUOT,
-        TRNS, LALT, RCTL
+        TRNS, RALT, RCTL
     ),
 
     // Layer1: Mouse Layer hold down F key
     KEYMAP(
         // left hand
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,
+        F1,F2,F3,F4,F5,F6,F7,
+        F14,F15,F16,F17,F18,F19,  TRNS,
+        F20,F21,F14,F23,TRNS,TRNS,
         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  TRNS,
-        TRNS,TRNS,F14,TRNS,TRNS,TRNS,
-        TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  TRNS,
-        TRNS,TRNS,TRNS,TRNS,BTN1,
+        TRNS,TRNS,TRNS,TRNS,F14,
                                       TRNS,TRNS,
                                            TRNS,
                                 BTN1, FN17,TRNS,
         // right hand
-        FN1,FN2,FN3,FN4,FN5,FN6,TRNS,
-        F15, F19,  P7,  P8,  P9,  TRNS,TRNS,
+        F8,F9,F10,F11,F12,F13,TRNS,
+        FN1, F19,  P7,  P8,  P9,  TRNS,FN10,
              F23,  P4,  P2,  P6,  TRNS,TRNS,
-        F16, F24,  P1,  P2,  P3,  TRNS,TRNS,
+        FN2, F24,  P1,  P2,  P3,  TRNS,TRNS,
                BTN1,TRNS,ACL0,NLCK,SLCK,
         TRNS,TRNS,
         TRNS,
@@ -50,7 +50,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(
         // left hand
         GRV,FN1,FN2,F22,F23,TRNS,TRNS,
-        F17,FN3,FN4,FN5,FN6,FN7,FN8,
+        MUTE,FN3,FN4,FN5,FN6,FN7,FN8,
         TRNS,FN9,FN10,FN0,TRNS, FN31,
         TRNS,FN14,FN15,FN16,FN17,FN18,FN19,
         TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -61,7 +61,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         FN28,FN29,FN25,FN26,FN21,FN12,TRNS,
         TRNS,FN20,FN22,UP,FN23,FN30,BSLS,
             HOME,LEFT,DOWN,RIGHT,END,TRNS,
-        TRNS,FN27,FN24,FN28,FN29,TRNS,TRNS,
+        TRNS,FN27,M,FN28,FN29,TRNS,TRNS,
                  TRNS,FN25,FN26,TRNS,TRNS,
         TRNS,DELETE,
         TRNS,
@@ -103,21 +103,18 @@ static const uint16_t PROGMEM fn_actions[] = {
     [4]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_L), //launchy
     [5]  = ACTION_MODS_KEY(MOD_LGUI, KC_S), //}
     [6]  = ACTION_MODS_KEY(MOD_LSFT, KC_0), //)
-    [8]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT, KC_RBRC), //Launchy Ctrl+;
-    [9]  = ACTION_LAYER_TAP_KEY(1, KC_F), //Mouse Layer or D
+    [8]  = ACTION_MODS_KEY(MOD_LCTL, KC_SCLN), //Launchy Ctrl+;
+    [9]  = ACTION_LAYER_TAP_KEY(1, KC_F), //Mouse Layer or F
     [11] = ACTION_LAYER_TAP_KEY(2, KC_SPC), //sublime expert layer
     [16] = ACTION_LAYER_MOMENTARY(0)
 };
 
 // Mouse Layer 1 hold down F key
 static const uint16_t PROGMEM fn_actions_1[] = {
-    [1]  = ACTION_MODS_KEY(MOD_LGUI, KC_LEFT),
     [17] = ACTION_MODS_KEY(MOD_LGUI, KC_S),
-    [2]  = ACTION_MODS_KEY(MOD_LGUI, KC_RIGHT),
-    [3]  = ACTION_MODS_KEY(MOD_LCTL, KC_F20),
-    [4]  = ACTION_MODS_KEY(MOD_LCTL, KC_F21),
-    [5]  = ACTION_MODS_KEY(MOD_LCTL, KC_F22),
-    [6]  = ACTION_MODS_KEY(MOD_LCTL, KC_F23)
+    [10] = ACTION_LAYER_SET_CLEAR(0),
+    [2]  = ACTION_MODS_KEY(MOD_LCTL,KC_F23),//maximize restore
+    [1]  = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_F23),//minimize
 };
 
 // Sublime Layer 2 hold down space key
@@ -132,7 +129,7 @@ static const uint16_t PROGMEM fn_actions_2[] = {
     [7]  = ACTION_MODS_KEY(MOD_LCTL,KC_T),
     [8]  = ACTION_MODS_KEY(MOD_LALT,KC_MINS),
     [9]  = ACTION_MODS_KEY(MOD_LCTL,KC_A),
-    [12] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_LBRC),
+    [12] = ACTION_MODS_KEY(MOD_LCTL,KC_TAB),
     [13] = ACTION_MODS_KEY(MOD_LCTL,KC_G),
     [14] = ACTION_MODS_KEY(MOD_LCTL,KC_Z),
     [15] = ACTION_MODS_KEY(MOD_LCTL,KC_X),
@@ -141,7 +138,7 @@ static const uint16_t PROGMEM fn_actions_2[] = {
     [18] = ACTION_MODS_KEY(MOD_LALT,KC_T),
     [19] = ACTION_MODS_KEY(MOD_LALT,KC_EQL),
     [20] = ACTION_MODS_KEY(MOD_LCTL,KC_Y),
-    [21] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_RBRC),
+    [21] = ACTION_MODS_KEY(MOD_LCTL|MOD_LSFT,KC_TAB),
     [22] = ACTION_MODS_KEY(MOD_LCTL,KC_LEFT),
     [23] = ACTION_MODS_KEY(MOD_LCTL,KC_RIGHT),
     [24] = ACTION_MODS_KEY(MOD_LALT,KC_M),
